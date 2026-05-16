@@ -1,0 +1,5262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wingstop — Abre As Asas · FIFA World Cup 2026</title>
+<meta name="description" content="Order Wingstop. Get a unique code. Spin the lucky wheel to win World Cup tickets, vouchers, and more. Join Brasil Club for exclusive rewards." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@300;400;500;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ws-green: #0d4d2c;
+    --ws-green-accent: #00754A;
+    --ws-green-house: #1E3932;
+    --ws-green-light: #d4e9e2;
+    --brasil-yellow: #FFCB05;
+    --brasil-yellow-dark: #e8b800;
+    --brasil-blue: #002776;
+    --brasil-blue-deep: #001a4d;
+    --cream: #f4f1e8;
+    --ceramic: #ebe7dd;
+    --paper: #ffffff;
+    --ink: rgba(0,0,0,0.87);
+    --ink-soft: rgba(0,0,0,0.58);
+    --gold: #cba258;
+    --red-hot: #c82014;
+    --shadow-card: 0 0.5px 0.5px rgba(0,0,0,0.14), 0 1px 2px rgba(0,0,0,0.08);
+    --shadow-lift: 0 20px 50px rgba(0,0,0,0.15), 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ============================ TOP NAV ============================ */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(244, 241, 232, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+  .topnav.transparent {
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+  .topnav.transparent .nav-link { color: white; }
+  .topnav.transparent .nav-logo { color: white; }
+  .topnav.transparent .nav-logo .logo-mark svg path,
+  .topnav.transparent .nav-logo .logo-mark svg circle,
+  .topnav.transparent .nav-logo .logo-mark svg text { fill: white; stroke: white; }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ws-green);
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+  }
+  .logo-mark svg { width: 100%; height: 100%; }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--ws-green-house);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: var(--brasil-yellow);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .nav-btn-cart {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .nav-btn-cart:hover { transform: scale(1.05); }
+  .nav-btn-cart svg { width: 18px; height: 18px; stroke: var(--ws-green-house); fill: none; stroke-width: 2; }
+  .nav-btn-cart .badge {
+    position: absolute;
+    top: -4px; right: -4px;
+    background: var(--red-hot);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    min-width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--paper);
+  }
+  .nav-btn-cart .badge.hidden { display: none; }
+
+  .nav-btn-cta {
+    background: var(--ws-green);
+    color: var(--brasil-yellow);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .nav-btn-cta:hover {
+    background: var(--brasil-yellow);
+    color: var(--ws-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,203,5,0.4);
+  }
+
+  /* ============================ HERO POSTER ============================ */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 20%, rgba(0,117,74,0.4) 0%, transparent 60%),
+      linear-gradient(180deg, var(--ws-green-house) 0%, var(--ws-green) 30%, #d4e9e2 70%, var(--cream) 100%);
+    isolation: isolate;
+  }
+  /* 🖼️ HERO POSTER IMAGE */
+  .hero-poster-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .hero-poster-img + * { z-index: 2; }
+  /* Overlay to maintain readability */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,77,44,0.3) 0%, transparent 30%, transparent 70%, rgba(244,241,232,0.4) 100%);
+    z-index: 2;
+  }
+  /* Hide CSS shapes when image is present */
+  .hero.has-image .pitch-stripe,
+  .hero.has-image .stadium-curve,
+  .hero.has-image .stadium-arch,
+  .hero.has-image .crowd,
+  .hero.has-image .leaf,
+  .hero.has-image .person-silhouette,
+  .hero.has-image .macaw-deco,
+  .hero.has-image .poster-wordmark {
+    display: none;
+  }
+  .hero.has-image .poster-title-wrap,
+  .hero.has-image .poster-subtitle,
+  .hero.has-image .wc-badge-large,
+  .hero.has-image .scroll-cue {
+    z-index: 5;
+  }
+
+  /* 🖼️ MENU CARD IMAGES */
+  .menu-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+  .menu-card-img.has-image {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* 🖼️ EVENT BANNER IMAGES */
+  .event-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .event-banner.has-image .event-banner-icon,
+  .event-banner.has-image .event-banner-deco {
+    display: none;
+  }
+  .event-banner.has-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.4) 100%);
+    z-index: 2;
+  }
+  .event-banner.has-image .event-pill-date,
+  .event-banner.has-image .event-pill-status {
+    z-index: 3;
+  }
+
+  /* 🖼️ LOGO IMAGE */
+  .logo-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Stadium top stripe */
+  .pitch-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 200px;
+    background:
+      repeating-linear-gradient(90deg,
+        #2d8a3e 0px, #2d8a3e 60px,
+        #229038 60px, #229038 120px);
+    z-index: 1;
+  }
+  .pitch-stripe::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, transparent, var(--ws-green-house));
+  }
+
+  /* Stadium frame curve */
+  .stadium-curve {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 280px;
+    background: var(--ws-green-house);
+    z-index: 2;
+    clip-path: ellipse(80% 100% at 50% 0%);
+    opacity: 0.5;
+  }
+  .stadium-arch {
+    position: absolute;
+    top: 80px; left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    max-width: 1000px;
+    height: 120px;
+    border: 4px solid var(--ws-green);
+    border-bottom: none;
+    border-radius: 200px 200px 0 0;
+    z-index: 3;
+    opacity: 0.4;
+  }
+
+  /* Crowd silhouettes */
+  .crowd {
+    position: absolute;
+    bottom: 200px;
+    width: 280px;
+    height: 200px;
+    z-index: 3;
+    opacity: 0.6;
+  }
+  .crowd.left {
+    left: 0;
+    background:
+      radial-gradient(circle at 20% 80%, var(--brasil-yellow) 0%, var(--brasil-yellow) 4%, transparent 5%),
+      radial-gradient(circle at 50% 75%, rgba(255,203,5,0.7) 0%, rgba(255,203,5,0.7) 3%, transparent 4%),
+      radial-gradient(circle at 80% 70%, var(--brasil-yellow) 0%, var(--brasil-yellow) 4%, transparent 5%),
+      radial-gradient(circle at 35% 60%, rgba(0,39,118,0.5) 0%, rgba(0,39,118,0.5) 3%, transparent 4%),
+      radial-gradient(circle at 65% 55%, rgba(255,203,5,0.7) 0%, rgba(255,203,5,0.7) 3%, transparent 4%);
+  }
+  .crowd.right {
+    right: 0;
+    background:
+      radial-gradient(circle at 80% 80%, var(--brasil-yellow) 0%, var(--brasil-yellow) 4%, transparent 5%),
+      radial-gradient(circle at 50% 75%, rgba(255,203,5,0.7) 0%, rgba(255,203,5,0.7) 3%, transparent 4%),
+      radial-gradient(circle at 20% 70%, var(--brasil-yellow) 0%, var(--brasil-yellow) 4%, transparent 5%),
+      radial-gradient(circle at 65% 60%, rgba(0,39,118,0.5) 0%, rgba(0,39,118,0.5) 3%, transparent 4%),
+      radial-gradient(circle at 35% 55%, rgba(255,203,5,0.7) 0%, rgba(255,203,5,0.7) 3%, transparent 4%);
+  }
+
+  /* Tropical leaves */
+  .leaf {
+    position: absolute;
+    z-index: 5;
+    opacity: 0.85;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+  }
+  .leaf-svg { width: 100%; height: 100%; }
+  .leaf.l1 { width: 280px; height: 180px; bottom: 100px; left: -60px; transform: rotate(-25deg); }
+  .leaf.l2 { width: 320px; height: 200px; bottom: 180px; right: -80px; transform: rotate(35deg); }
+  .leaf.l3 { width: 180px; height: 120px; top: 220px; right: 80px; transform: rotate(15deg); opacity: 0.5; }
+
+  /* Macaw */
+  .macaw-deco {
+    position: absolute;
+    top: 160px;
+    right: 18%;
+    width: 180px;
+    height: 180px;
+    z-index: 6;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
+    animation: macawFloat 4s ease-in-out infinite;
+  }
+  @keyframes macawFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+  }
+
+  /* Central composition */
+  .hero-content {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 7;
+    display: grid;
+    grid-template-columns: 1fr 480px 1fr;
+    align-items: end;
+    padding: 0 48px 100px;
+  }
+
+  /* FIFA badge */
+  .wc-badge-large {
+    position: absolute;
+    top: 110px;
+    left: 60px;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.92);
+    padding: 12px 18px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-card);
+  }
+  .wc-trophy {
+    width: 36px; height: 44px;
+    background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%);
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .wc-trophy::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%;
+    transform: translateX(-50%);
+    width: 26px; height: 8px;
+    background: #8B6914;
+    border-radius: 4px;
+  }
+  .wc-trophy::after {
+    content: '';
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 18px;
+    background: linear-gradient(180deg, #fff8dc, transparent);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+  .wc-badge-text {
+    line-height: 1.2;
+  }
+  .wc-badge-text strong {
+    display: block;
+    color: var(--ws-green-house);
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  .wc-badge-text span {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  /* Wingstop wordmark */
+  .poster-wordmark {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: var(--ws-green);
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    padding: 10px 30px;
+    border-radius: 6px;
+    letter-spacing: 0.1em;
+    z-index: 8;
+    text-transform: uppercase;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Center subject person */
+  .person-silhouette {
+    position: relative;
+    width: 340px;
+    height: 560px;
+    margin: 0 auto;
+    z-index: 7;
+  }
+  .person-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 440px;
+    background: linear-gradient(180deg, var(--brasil-yellow) 0%, var(--brasil-yellow) 70%, var(--ws-green) 70%, var(--ws-green) 100%);
+    border-radius: 130px 130px 30px 30px;
+    box-shadow: inset -20px 0 40px rgba(0,0,0,0.15), 0 20px 50px rgba(0,0,0,0.25);
+  }
+  .person-body::before {
+    content: 'CBF';
+    position: absolute;
+    top: 120px;
+    right: 40px;
+    width: 50px; height: 50px;
+    background: var(--ws-green);
+    border-radius: 8px;
+    color: var(--brasil-yellow);
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+  }
+  .person-body::after {
+    content: '★';
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ws-green);
+    font-size: 32px;
+    opacity: 0.4;
+  }
+  .person-head {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 160px;
+    background: linear-gradient(180deg, #d4a574 0%, #b88a5a 100%);
+    border-radius: 70px 70px 60px 60px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .person-head::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -12px;
+    right: -12px;
+    height: 70px;
+    background: #4a2c1a;
+    border-radius: 80px 80px 30px 30px;
+  }
+  .food-box {
+    position: absolute;
+    top: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 120px;
+    background: linear-gradient(135deg, #d4691e 0%, #8b4513 100%);
+    border-radius: 10px;
+    z-index: 8;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+  .food-box::before {
+    content: '🍗';
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 64px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  }
+  .food-box::after {
+    content: 'WINGSTOP';
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Anton', sans-serif;
+    color: var(--brasil-yellow);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Title */
+  .poster-title-wrap {
+    position: absolute;
+    bottom: 180px;
+    left: 0; right: 0;
+    z-index: 9;
+    text-align: center;
+    pointer-events: none;
+  }
+  .poster-title {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    line-height: 0.82;
+  }
+  .poster-title .line1 {
+    display: block;
+    color: var(--ws-green);
+    font-size: 14vw;
+    max-font-size: 200px;
+    text-shadow:
+      4px 4px 0 rgba(0,0,0,0.1),
+      -2px -2px 0 white;
+    -webkit-text-stroke: 2px white;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+  }
+  .poster-title .line2 {
+    display: block;
+    color: var(--brasil-blue);
+    font-size: 12vw;
+    margin-top: -16px;
+    text-shadow:
+      4px 4px 0 rgba(0,0,0,0.1),
+      -2px -2px 0 white;
+    -webkit-text-stroke: 2px white;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+  }
+
+  .poster-subtitle {
+    position: absolute;
+    bottom: 130px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--ws-green);
+    font-size: 28px;
+    letter-spacing: 0.3em;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .poster-subtitle::before,
+  .poster-subtitle::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background: var(--ws-green);
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ws-green-house);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: scrollBounce 2s ease infinite;
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
+  .scroll-cue::after {
+    content: '';
+    width: 1px; height: 30px;
+    background: var(--ws-green-house);
+  }
+
+  /* ============================ COUNTDOWN BANNER ============================ */
+  .countdown-banner {
+    background: linear-gradient(135deg, var(--ws-green-house) 0%, #0a1f1a 100%);
+    color: white;
+    padding: 60px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .countdown-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--brasil-yellow) 0%, transparent 60%);
+    opacity: 0.15;
+  }
+  .countdown-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px);
+    pointer-events: none;
+  }
+  .countdown-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  .countdown-info .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px;
+    background: var(--red-hot);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(200,32,20, 0.7); }
+    50% { box-shadow: 0 0 0 10px rgba(200,32,20, 0); }
+  }
+
+  .countdown-info h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 56px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .countdown-info h2 .accent { color: var(--brasil-yellow); display: block; }
+  .countdown-info p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .countdown-info .cta-row {
+    margin-top: 24px;
+    display: flex;
+    gap: 14px;
+  }
+  .btn-primary {
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255,203,5,0.5);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .btn-ghost:hover {
+    border-color: var(--brasil-yellow);
+    color: var(--brasil-yellow);
+  }
+
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .cd-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px 12px 24px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .cd-box:hover { transform: translateY(-5px); }
+  .cd-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 64px;
+    color: var(--brasil-yellow);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .cd-lbl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+
+  /* ============================ SECTION ============================ */
+  .section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+
+  .section-head {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .section-head.left { text-align: left; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--ws-green-accent);
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-left: 18px;
+    position: relative;
+  }
+  .eyebrow::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 12px; height: 2px;
+    background: var(--ws-green-accent);
+  }
+  .section-head h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 56px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  .section-head .yellow { color: var(--brasil-yellow); }
+  .section-head p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .section-head.left p { margin: 0; }
+
+  /* ============================ ORDER GRID ============================ */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .menu-card {
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lift);
+  }
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -50%;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, var(--brasil-yellow) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .menu-card:hover::before { opacity: 0.2; }
+
+  .menu-card-img {
+    width: 100%;
+    height: 160px;
+    background: var(--cream);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .menu-card h4 {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .menu-card .price {
+    font-family: 'Anton', sans-serif;
+    color: var(--ws-green-accent);
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .menu-card .desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .menu-add {
+    width: 100%;
+    background: var(--ws-green-accent);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .menu-add:hover {
+    background: var(--ws-green-house);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,117,74,0.3);
+  }
+  .menu-add.added { background: var(--brasil-yellow); color: var(--ws-green-house); }
+
+  /* ============================ SPIN SECTION ============================ */
+  .spin-section {
+    background: linear-gradient(160deg, var(--brasil-yellow) 0%, #ffa500 50%, #e85d00 100%);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .spin-section::before {
+    content: '🎁';
+    position: absolute;
+    top: -50px; right: -50px;
+    font-size: 300px;
+    opacity: 0.1;
+    transform: rotate(-15deg);
+  }
+  .spin-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .spin-info h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .spin-info h2 .stroke {
+    -webkit-text-stroke: 2px var(--ws-green-house);
+    color: transparent;
+    display: block;
+  }
+  .spin-info p {
+    font-size: 17px;
+    color: rgba(0,0,0,0.75);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 540px;
+  }
+
+  /* Prize cards grid */
+  .prizes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 30px;
+    max-width: 500px;
+  }
+  .prize-tile {
+    background: rgba(0,0,0,0.15);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .prize-tile-emoji { font-size: 40px; margin-bottom: 8px; }
+  .prize-tile-name {
+    font-family: 'Anton', sans-serif;
+    color: var(--ws-green-house);
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .prize-tile-value {
+    font-size: 11px;
+    color: rgba(0,0,0,0.6);
+    font-weight: 700;
+  }
+
+  /* Redeem card */
+  .redeem-card {
+    background: var(--ws-green-house);
+    color: white;
+    border-radius: 24px;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lift);
+  }
+  .redeem-card::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: -50px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,203,5,0.2) 0%, transparent 60%);
+  }
+  .redeem-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .redeem-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .code-input-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .code-input {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 2px dashed rgba(255,203,5,0.4);
+    border-radius: 16px;
+    padding: 20px;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-transform: uppercase;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .code-input:focus {
+    border-color: var(--brasil-yellow);
+    background: rgba(255,255,255,0.12);
+  }
+  .code-input::placeholder {
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+  .code-format-hint {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .redeem-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+    position: relative;
+  }
+  .redeem-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,203,5,0.4);
+  }
+  .redeem-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Codes list */
+  .my-codes-section {
+    padding: 80px 48px;
+    background: var(--ceramic);
+  }
+  .my-codes-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .codes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+  }
+  .code-row {
+    background: var(--paper);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow-card);
+    border-left: 4px solid var(--ws-green-accent);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .code-row:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+  .code-row.used { opacity: 0.55; border-left-color: var(--ink-soft); }
+  .code-row.winning {
+    border-left-color: var(--brasil-yellow);
+    background: linear-gradient(135deg, #fff9e6 0%, white 100%);
+  }
+  .code-row .code-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ws-green-house);
+    flex: 1;
+  }
+  .code-row .code-meta {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 3px;
+    font-weight: 600;
+  }
+  .code-status {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.08em;
+  }
+  .code-status.fresh { background: var(--ws-green-light); color: var(--ws-green); }
+  .code-status.used-tag { background: var(--ceramic); color: var(--ink-soft); }
+  .code-status.won { background: var(--brasil-yellow); color: var(--ws-green-house); }
+
+  /* ============================ MEMBERSHIP SECTION ============================ */
+  .member-section {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(255,203,5,0.3) 0%, transparent 50%),
+      linear-gradient(160deg, var(--ws-green) 0%, var(--ws-green-house) 60%, #0a1f1a 100%);
+    padding: 100px 48px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .member-section::before {
+    content: '⚽';
+    position: absolute;
+    top: -30px; right: -30px;
+    font-size: 350px;
+    opacity: 0.05;
+    transform: rotate(-15deg);
+  }
+  .member-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .member-section .section-head h2 { color: white; }
+  .member-section .section-head p { color: rgba(255,255,255,0.7); }
+
+  .member-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+
+  /* Big member card */
+  .member-card-big {
+    background: linear-gradient(135deg, var(--brasil-yellow) 0%, var(--brasil-yellow-dark) 50%, #cd8e00 100%);
+    border-radius: 28px;
+    padding: 36px;
+    color: var(--ws-green-house);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    aspect-ratio: 1.6 / 1;
+  }
+  .member-card-big::before {
+    content: '🇧🇷';
+    position: absolute;
+    top: -30px; right: -30px;
+    font-size: 200px;
+    opacity: 0.18;
+  }
+  .member-card-big::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg,
+      transparent, transparent 20px,
+      rgba(0,0,0,0.04) 20px, rgba(0,0,0,0.04) 22px);
+    pointer-events: none;
+  }
+  .mc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .mc-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mc-logo-mark {
+    width: 48px; height: 48px;
+    background: var(--ws-green-house);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brasil-yellow);
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+  }
+  .mc-logo-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .mc-logo-name span {
+    display: block;
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+  .mc-tier-badge {
+    background: var(--ws-green-house);
+    color: var(--brasil-yellow);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .mc-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    letter-spacing: 0.3em;
+    margin: 30px 0;
+    position: relative;
+  }
+  .mc-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+  }
+  .mc-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .mc-name span {
+    display: block;
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+    font-family: 'Manrope';
+    font-weight: 700;
+  }
+  .mc-stars { text-align: right; }
+  .mc-stars .num {
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+    line-height: 1;
+    color: var(--ws-green-house);
+  }
+  .mc-stars .lbl {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 4px;
+  }
+
+  /* Tier progress side */
+  .tier-progress-big {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 32px;
+  }
+  .tp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .tp-current {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .tp-current span {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+    font-family: 'Manrope';
+    font-weight: 700;
+  }
+  .tp-next-tier {
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .tp-bar {
+    height: 18px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .tp-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,
+      var(--ws-green-accent) 0%,
+      var(--brasil-yellow) 70%,
+      #ffa500 100%);
+    border-radius: 50px;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 0 20px rgba(255,203,5,0.4);
+  }
+  .tp-progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+  }
+  .tp-progress-text .left { color: var(--brasil-yellow); }
+  .tp-progress-text .right strong { color: white; font-weight: 800; }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .tier-cell {
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 20px 12px;
+    text-align: center;
+    border: 1.5px solid transparent;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .tier-cell.locked { opacity: 0.4; }
+  .tier-cell.current {
+    border-color: var(--brasil-yellow);
+    background: rgba(255,203,5,0.1);
+    transform: scale(1.05);
+  }
+  .tier-cell.completed { background: rgba(13,77,44,0.4); }
+  .tier-cell-icon { font-size: 32px; margin-bottom: 8px; }
+  .tier-cell-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .tier-cell-pts {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 700;
+  }
+  .tier-cell.current::after {
+    content: 'NOW';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--red-hot);
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 50px;
+  }
+
+  /* Benefits grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .benefit-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s ease;
+  }
+  .benefit-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-3px);
+  }
+  .benefit-card.locked { opacity: 0.5; }
+  .benefit-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: var(--ws-green-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .benefit-card.locked .benefit-icon {
+    background: rgba(255,255,255,0.1);
+  }
+  .benefit-info { flex: 1; }
+  .benefit-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .benefit-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .benefit-status {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 50px;
+    flex-shrink: 0;
+    letter-spacing: 0.08em;
+  }
+  .benefit-status.unlocked {
+    background: var(--ws-green-light);
+    color: var(--ws-green);
+  }
+  .benefit-status.locked {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ============================ EVENTS SECTION ============================ */
+  .events-section {
+    background: var(--cream);
+    padding: 100px 48px;
+  }
+  .events-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .event-card {
+    background: var(--paper);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lift);
+  }
+  .event-banner {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .event-card.green .event-banner { background: linear-gradient(135deg, var(--ws-green) 0%, var(--ws-green-house) 100%); }
+  .event-card.yellow .event-banner { background: linear-gradient(135deg, var(--brasil-yellow) 0%, #e6a800 100%); }
+  .event-card.blue .event-banner { background: linear-gradient(135deg, var(--brasil-blue) 0%, var(--brasil-blue-deep) 100%); }
+  .event-card.red .event-banner { background: linear-gradient(135deg, #e23030 0%, #a00 100%); }
+  .event-banner-icon {
+    font-size: 90px;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+  }
+  .event-banner-deco {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 16px, rgba(255,255,255,0.06) 16px, rgba(255,255,255,0.06) 17px);
+  }
+  .event-pill-date {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .event-pill-status {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 6px 11px;
+    border-radius: 50px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .event-card.red .event-pill-status { background: var(--red-hot); color: white; }
+  .event-content { padding: 24px; }
+  .event-content h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    line-height: 1.05;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .event-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .event-meta .dot { width: 4px; height: 4px; background: var(--ink-soft); border-radius: 50%; }
+  .event-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 50px;
+    background: var(--ws-green-accent);
+    color: white;
+    border: none;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .event-btn:hover {
+    background: var(--ws-green-house);
+    transform: translateY(-2px);
+  }
+
+  /* ============================ FOOTER ============================ */
+  footer {
+    background: var(--ws-green-house);
+    color: white;
+    padding: 80px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: '🍗';
+    position: absolute;
+    bottom: -60px; right: 5%;
+    font-size: 280px;
+    opacity: 0.05;
+    transform: rotate(-15deg);
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    position: relative;
+  }
+  .footer-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    color: var(--brasil-yellow);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+  .footer-tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+  }
+  .footer-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 380px;
+  }
+  .footer-col h5 {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--brasil-yellow);
+    margin-bottom: 18px;
+    letter-spacing: 0.08em;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .footer-col li:hover { color: var(--brasil-yellow); }
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+  .social-icons { display: flex; gap: 14px; }
+  .social-icons a {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .social-icons a:hover {
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    transform: translateY(-3px);
+  }
+
+  /* ============================ TOAST ============================ */
+  .toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ws-green-house);
+    color: white;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    white-space: nowrap;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ============================ MODALS ============================ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+  }
+  .modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal {
+    background: var(--cream);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 460px;
+    overflow: hidden;
+    transform: scale(0.85);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal::-webkit-scrollbar { display: none; }
+  .modal-overlay.show .modal { transform: scale(1); }
+
+  /* Wheel modal */
+  .wheel-modal {
+    background: linear-gradient(160deg, var(--ws-green-house) 0%, #0a1f1a 100%);
+    color: white;
+    padding: 36px 30px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+  }
+  .wheel-modal::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--brasil-yellow) 0%, transparent 60%);
+    opacity: 0.3;
+  }
+  .wheel-modal-tag {
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    position: relative;
+  }
+  .wheel-modal-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .wheel-modal-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .wheel-container {
+    width: 360px;
+    height: 360px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+  .wheel-pointer {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 30px solid var(--red-hot);
+    z-index: 10;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  }
+  .wheel-pointer::after {
+    content: '';
+    position: absolute;
+    top: -36px;
+    left: -9px;
+    width: 18px; height: 18px;
+    background: var(--red-hot);
+    border-radius: 50%;
+  }
+  .wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    border: 8px solid white;
+    box-shadow:
+      0 0 0 6px var(--brasil-yellow),
+      0 0 0 10px var(--ws-green-house),
+      0 15px 50px rgba(0,0,0,0.5);
+    transition: transform 5s cubic-bezier(0.17, 0.67, 0.16, 0.99);
+    overflow: hidden;
+  }
+  .wheel-svg {
+    width: 100%; height: 100%;
+    display: block;
+  }
+  .wheel-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    border: 4px solid var(--brasil-yellow);
+    z-index: 5;
+  }
+  .wheel-center-logo {
+    font-family: 'Anton', sans-serif;
+    color: var(--ws-green);
+    font-size: 12px;
+    text-align: center;
+    line-height: 1;
+  }
+  .wheel-center-logo small {
+    display: block;
+    font-size: 8px;
+    margin-top: 3px;
+    color: var(--ws-green-accent);
+  }
+  .spin-action-btn {
+    width: 100%;
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    border: none;
+    padding: 18px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 24px rgba(255,203,5,0.4);
+    position: relative;
+  }
+  .spin-action-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(255,203,5,0.55);
+  }
+  .spin-action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .wheel-modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Winning modal */
+  .modal.winning {
+    background: linear-gradient(160deg, var(--brasil-yellow) 0%, #ffa500 50%, #e85d00 100%);
+    color: var(--ws-green-house);
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .modal.winning::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-conic-gradient(rgba(255,255,255,0.08) 0deg 10deg, transparent 10deg 20deg);
+    pointer-events: none;
+  }
+  .confetti {
+    position: absolute;
+    width: 10px; height: 14px;
+    pointer-events: none;
+  }
+  .trophy-anim {
+    font-size: 90px;
+    margin-bottom: 12px;
+    animation: bounce 1s ease infinite alternate;
+    position: relative;
+  }
+  @keyframes bounce {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-14px) scale(1.05); }
+  }
+  .modal-winning-tag {
+    background: var(--ws-green-house);
+    color: var(--brasil-yellow);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 7px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .modal-winning-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .modal-winning-sub {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .prize-card-modal {
+    background: var(--ws-green-house);
+    color: white;
+    border-radius: 20px;
+    padding: 26px 22px;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .prize-card-icon { font-size: 50px; margin-bottom: 10px; }
+  .prize-card-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    color: var(--brasil-yellow);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .prize-card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .prize-card-meta {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+  .prize-card-meta strong { color: var(--brasil-yellow); }
+  .modal-winning-body {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    color: rgba(0,0,0,0.75);
+    position: relative;
+  }
+  .modal-btns { display: flex; gap: 12px; position: relative; }
+  .modal-btn {
+    flex: 1;
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .modal-btn:hover { transform: translateY(-2px); }
+  .modal-btn.primary {
+    background: var(--ws-green-house);
+    color: var(--brasil-yellow);
+  }
+  .modal-btn.secondary {
+    background: rgba(0,0,0,0.1);
+    color: var(--ws-green-house);
+  }
+
+  /* No luck */
+  .modal.no-luck {
+    background: var(--paper);
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .no-luck-icon {
+    font-size: 80px;
+    margin-bottom: 18px;
+    opacity: 0.7;
+  }
+  .no-luck h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .no-luck p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+  .consolation {
+    background: var(--ws-green-light);
+    color: var(--ws-green);
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .consolation strong { color: var(--ws-green-accent); }
+
+  /* Invalid */
+  .modal.invalid {
+    background: var(--paper);
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .invalid-icon {
+    width: 80px; height: 80px;
+    background: rgba(200, 32, 20, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 18px;
+  }
+  .invalid h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .invalid p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  /* Order success */
+  .modal.order-success {
+    background: var(--paper);
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .order-success-icon {
+    width: 100px; height: 100px;
+    background: var(--ws-green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    margin: 0 auto 18px;
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    color: var(--ws-green-accent);
+  }
+  @keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+  .modal.order-success h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .modal.order-success > p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .receipt-card {
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 22px;
+    border: 2px dashed var(--brasil-yellow);
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .receipt-card h4 {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .receipt-card p {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .new-code-display {
+    background: var(--ws-green-house);
+    color: var(--brasil-yellow);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+
+  /* Spinner */
+  .spinner {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 2.5px solid rgba(13,77,44,0.3);
+    border-radius: 50%;
+    border-top-color: var(--ws-green-house);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ============================ EVENT MODAL VARIANTS ============================ */
+
+  /* === Match schedule (Watch Party) === */
+  .match-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .match-row {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .match-flag-pair {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .match-vs {
+    font-family: 'Anton', sans-serif;
+    color: var(--brasil-yellow);
+    -webkit-text-stroke: 1px var(--ws-green-house);
+    font-size: 14px;
+  }
+  .match-info { flex: 1; }
+  .match-teams {
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--ws-green-house);
+  }
+  .match-time {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .match-stage {
+    font-size: 10px;
+    background: var(--ws-green-accent);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* === Gallery (Flagship) === */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    gap: 8px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .gallery-item {
+    background: linear-gradient(135deg, var(--brasil-yellow) 0%, #e6a800 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-item:hover { transform: scale(1.05); z-index: 2; }
+  .gallery-item:nth-child(1) {
+    grid-row: 1 / 3;
+    background: linear-gradient(135deg, var(--ws-green) 0%, var(--ws-green-house) 100%);
+    color: white;
+    font-size: 60px;
+  }
+  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #c82014 0%, #8b0000 100%); }
+  .gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--brasil-blue) 0%, var(--brasil-blue-deep) 100%); }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #cba258 0%, #8B6914 100%); }
+  .gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--brasil-yellow) 0%, #ff9500 100%); }
+
+  /* Gallery image support */
+  .gallery-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.1); }
+  .gallery-item.has-photo .emoji-fallback { display: none; }
+  .gallery-item .emoji-fallback {
+    position: relative;
+    z-index: 1;
+  }
+  .gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+  }
+  .gallery-label {
+    position: absolute;
+    bottom: 8px; left: 10px;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    z-index: 3;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  /* === Schedule timeline (Flagship) === */
+  .schedule-timeline {
+    margin-top: 12px;
+  }
+  .schedule-row {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-left: 3px solid var(--brasil-yellow);
+    padding-left: 16px;
+    margin-left: 8px;
+    position: relative;
+  }
+  .schedule-row::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 14px;
+    width: 13px; height: 13px;
+    background: var(--brasil-yellow);
+    border: 3px solid var(--paper);
+    border-radius: 50%;
+  }
+  .schedule-time {
+    font-family: 'Anton', sans-serif;
+    color: var(--ws-green-accent);
+    font-size: 15px;
+    min-width: 70px;
+    line-height: 1;
+    padding-top: 1px;
+  }
+  .schedule-content {
+    flex: 1;
+  }
+  .schedule-title {
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--ws-green-house);
+    margin-bottom: 2px;
+  }
+  .schedule-desc {
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  /* === Prize showcase (Ticket Draw) === */
+  .prize-showcase {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .prize-ticket-card {
+    background: linear-gradient(160deg, var(--brasil-yellow) 0%, #ffa500 100%);
+    border-radius: 10px;
+    padding: 12px 6px;
+    text-align: center;
+    color: var(--ws-green-house);
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease;
+    position: relative;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  }
+  .prize-ticket-card:nth-child(even) { transform: rotate(3deg); }
+  .prize-ticket-card:hover { transform: rotate(0) scale(1.1); z-index: 2; }
+  .prize-ticket-card::before, .prize-ticket-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px; height: 8px;
+    background: var(--paper);
+    border-radius: 50%;
+  }
+  .prize-ticket-card::before { left: -4px; }
+  .prize-ticket-card::after { right: -4px; }
+  .prize-ticket-icon { font-size: 24px; margin-bottom: 4px; }
+  .prize-ticket-label {
+    font-family: 'Anton', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .prize-ticket-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 2px;
+    color: var(--brasil-blue);
+  }
+
+  /* Big countdown for ticket draw */
+  .live-counter {
+    background: linear-gradient(135deg, var(--ws-green-house) 0%, #0a1f1a 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin: 14px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .live-counter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.02) 2px, rgba(255,255,255,0.02) 4px);
+  }
+  .live-counter-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--brasil-yellow);
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+    font-weight: 800;
+    position: relative;
+  }
+  .live-counter-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    color: var(--brasil-yellow);
+    line-height: 1;
+    position: relative;
+  }
+  .live-counter-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    position: relative;
+  }
+
+  /* Steps */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .step-card {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 16px 10px;
+    text-align: center;
+    position: relative;
+  }
+  .step-card-num {
+    width: 28px; height: 28px;
+    background: var(--ws-green-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    margin: 0 auto 10px;
+  }
+  .step-card-icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .step-card-title {
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--ws-green-house);
+  }
+
+  /* === Leaderboard (Contest) === */
+  .leaderboard {
+    margin-top: 12px;
+  }
+  .lb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--cream);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .lb-row.gold { background: linear-gradient(135deg, #fff9e6 0%, #ffe9a8 100%); border: 1.5px solid var(--brasil-yellow); }
+  .lb-row.silver { background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); border: 1.5px solid var(--silver); }
+  .lb-row.bronze { background: linear-gradient(135deg, #ffe8d4 0%, #ffd1a8 100%); border: 1.5px solid var(--bronze); }
+  .lb-rank {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    width: 40px;
+    text-align: center;
+    color: var(--ws-green-house);
+  }
+  .lb-info { flex: 1; }
+  .lb-name {
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--ws-green-house);
+  }
+  .lb-detail {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .lb-score {
+    font-family: 'Anton', sans-serif;
+    color: var(--ws-green-accent);
+    font-size: 22px;
+    line-height: 1;
+  }
+  .lb-score small {
+    font-family: 'Manrope';
+    font-size: 9px;
+    color: var(--ink-soft);
+    font-weight: 700;
+    display: block;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Prize tiers (Contest) */
+  .prize-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .prize-tier {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 16px 8px;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  .prize-tier.gold {
+    background: linear-gradient(180deg, #fff9e6 0%, #fff 100%);
+    border-color: var(--brasil-yellow);
+  }
+  .prize-tier.silver {
+    background: linear-gradient(180deg, #f5f5f5 0%, #fff 100%);
+    border-color: var(--silver);
+  }
+  .prize-tier.bronze {
+    background: linear-gradient(180deg, #ffe8d4 0%, #fff 100%);
+    border-color: var(--bronze);
+  }
+  .prize-tier-medal {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+  .prize-tier-amount {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    color: var(--ws-green-house);
+    line-height: 1;
+  }
+  .prize-tier-extra {
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-weight: 700;
+  }
+
+  /* Rules list */
+  .rules-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .rules-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
+    font-size: 13px;
+    color: var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .rules-list li:last-child { border-bottom: none; }
+  .rules-list li::before {
+    content: '✓';
+    color: var(--ws-green-accent);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* === DJ Lineup === */
+  .dj-lineup {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .dj-card {
+    background: linear-gradient(135deg, var(--ws-green-house) 0%, #0a1f1a 100%);
+    color: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dj-card::before {
+    content: '🎧';
+    position: absolute;
+    right: -10px; bottom: -20px;
+    font-size: 80px;
+    opacity: 0.06;
+    transform: rotate(-15deg);
+  }
+  .dj-time {
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 70px;
+    line-height: 1.1;
+  }
+  .dj-info {
+    flex: 1;
+    position: relative;
+  }
+  .dj-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: var(--brasil-yellow);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .dj-genre {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+  }
+  .dj-icon {
+    font-size: 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Ticket tiers (DJ) */
+  .ticket-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .ticket-tier {
+    background: var(--paper);
+    border: 2px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 16px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .ticket-tier:hover {
+    border-color: var(--ws-green-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .ticket-tier.featured {
+    border-color: var(--brasil-yellow);
+    background: linear-gradient(180deg, #fff9e6 0%, white 100%);
+  }
+  .ticket-tier.featured::before {
+    content: 'BEST VALUE';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    font-size: 9px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .tier-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tier-price {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    color: var(--ws-green-accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .tier-perks {
+    font-size: 10px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* === Menu courses (Final Gala) === */
+  .courses-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .course-row {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 4px solid var(--gold);
+  }
+  .course-num {
+    font-family: 'Anton', sans-serif;
+    color: var(--gold);
+    font-size: 24px;
+    width: 36px;
+    text-align: center;
+    line-height: 1;
+  }
+  .course-info { flex: 1; }
+  .course-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .course-desc {
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .course-icon { font-size: 28px; }
+
+  /* Seating chart */
+  .seating-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .seat-zone {
+    border-radius: 14px;
+    padding: 18px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .seat-zone:hover { transform: translateY(-3px); }
+  .seat-zone.vip {
+    background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%);
+    color: white;
+  }
+  .seat-zone.premium {
+    background: linear-gradient(135deg, var(--brasil-blue) 0%, var(--brasil-blue-deep) 100%);
+    color: white;
+  }
+  .seat-zone.standard {
+    background: linear-gradient(135deg, var(--ws-green) 0%, var(--ws-green-house) 100%);
+    color: white;
+  }
+  .seat-zone-icon { font-size: 32px; margin-bottom: 6px; }
+  .seat-zone-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .seat-zone-price {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    color: var(--brasil-yellow);
+    line-height: 1;
+  }
+  .seat-zone-avail {
+    font-size: 9px;
+    margin-top: 6px;
+    opacity: 0.8;
+  }
+
+  /* Generic event modal */
+  .event-detail-modal {
+    background: var(--paper);
+    padding: 0;
+    max-width: 720px;
+    max-height: 92vh;
+    overflow: hidden;
+    border-radius: 28px;
+  }
+  .ed-header {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ed-header.green { background: linear-gradient(135deg, var(--ws-green) 0%, var(--ws-green-house) 100%); }
+  .ed-header.yellow { background: linear-gradient(135deg, var(--brasil-yellow) 0%, #e6a800 100%); }
+  .ed-header.blue { background: linear-gradient(135deg, var(--brasil-blue) 0%, var(--brasil-blue-deep) 100%); }
+  .ed-header.red { background: linear-gradient(135deg, #e23030 0%, #a00 100%); }
+  .ed-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 16px, rgba(255,255,255,0.06) 16px, rgba(255,255,255,0.06) 17px);
+  }
+  .ed-header-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .ed-header-emoji {
+    font-size: 110px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+    display: none;
+  }
+  .ed-header-emoji.visible { display: block; }
+  .ed-header-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%);
+    z-index: 3;
+  }
+  .ed-header-info {
+    position: absolute;
+    bottom: 20px; left: 24px; right: 24px;
+    z-index: 4;
+    color: white;
+  }
+  .ed-date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--brasil-yellow);
+    color: var(--ws-green-house);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .ed-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    line-height: 0.95;
+  }
+  .ed-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 38px; height: 38px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+  }
+  .ed-close:hover { background: rgba(0,0,0,0.8); transform: rotate(90deg); }
+  .ed-body {
+    padding: 28px 32px;
+    overflow-y: auto;
+    max-height: calc(92vh - 220px);
+  }
+  .ed-body::-webkit-scrollbar { width: 6px; }
+  .ed-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
+  .ed-section { margin-bottom: 24px; }
+  .ed-section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ed-section-title svg { width: 18px; height: 18px; stroke: var(--ws-green-accent); fill: none; stroke-width: 2; }
+  .ed-section-emoji-icon { font-size: 18px; }
+  .ed-desc {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .ed-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .ed-info-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ed-info-icon {
+    font-size: 24px;
+    width: 36px;
+    text-align: center;
+  }
+  .ed-info-text { flex: 1; }
+  .ed-info-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+  }
+  .ed-info-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ws-green-house);
+  }
+  .brasil-map {
+    background: linear-gradient(135deg, #d4e9e2 0%, #f4f1e8 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(13,77,44,0.1);
+  }
+  .brasil-map-svg {
+    width: 100%;
+    height: 220px;
+    display: block;
+  }
+  .map-pin {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .map-pin:hover { transform: scale(1.3); transform-origin: center; }
+  .ed-locations {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .loc-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .loc-card:hover {
+    border-color: var(--ws-green-accent);
+    background: var(--ws-green-light);
+    transform: translateX(4px);
+  }
+  .loc-flag {
+    font-size: 32px;
+    width: 44px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .loc-info { flex: 1; min-width: 0; }
+  .loc-city {
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+    color: var(--ws-green-house);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .loc-address {
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .loc-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .loc-phone {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ws-green-accent);
+    font-weight: 700;
+  }
+  .loc-call-btn {
+    background: var(--ws-green-accent);
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .loc-call-btn:hover { transform: scale(1.08); background: var(--ws-green-house); }
+  .ed-cta {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .ed-cta-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .ed-cta-btn:hover { transform: translateY(-2px); }
+  .ed-cta-btn.primary {
+    background: var(--ws-green-accent);
+    color: white;
+    box-shadow: 0 6px 16px rgba(0,117,74,0.3);
+  }
+  .ed-cta-btn.primary:hover { background: var(--ws-green-house); }
+  .ed-cta-btn.secondary {
+    background: var(--cream);
+    color: var(--ws-green-house);
+  }
+  .ed-cta-btn.secondary:hover { background: var(--ceramic); }
+  .ed-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .ed-feature-pill {
+    background: var(--ws-green-light);
+    color: var(--ws-green);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .event-card::after {
+    content: 'CLICK FOR DETAILS →';
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--ws-green-accent);
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .event-card:hover::after { opacity: 1; }
+
+  @media (max-width: 768px) {
+    .event-detail-modal { max-width: 100%; max-height: 95vh; border-radius: 20px; }
+    .ed-header { height: 160px; }
+    .ed-title { font-size: 24px; }
+    .ed-body { padding: 20px; }
+    .ed-info-grid { grid-template-columns: 1fr; }
+    .prize-showcase { grid-template-columns: repeat(3, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 80px 80px 80px; }
+    .gallery-item:nth-child(1) { grid-row: auto; grid-column: 1/3; }
+    .steps-row { grid-template-columns: 1fr; }
+    .prize-tiers { grid-template-columns: 1fr; }
+    .ticket-tiers { grid-template-columns: 1fr; }
+    .seating-grid { grid-template-columns: 1fr; }
+    .ed-cta { flex-direction: column; }
+  }
+
+  /* Stage hint */
+  .demo-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(30,57,50,0.95);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 11px;
+    line-height: 1.6;
+    max-width: 280px;
+    z-index: 90;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .demo-hint strong { color: var(--brasil-yellow); }
+  .demo-hint .close-hint {
+    position: absolute;
+    top: 6px; right: 6px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width: 1024px) {
+    .topnav { padding: 14px 24px; }
+    .nav-links { gap: 20px; }
+    .nav-link { font-size: 12px; }
+    .section { padding: 70px 24px; }
+    .countdown-banner { padding: 50px 24px; }
+    .countdown-inner { grid-template-columns: 1fr; gap: 40px; }
+    .countdown-info h2 { font-size: 44px; }
+    .cd-num { font-size: 48px; }
+    .spin-section { padding: 70px 24px; }
+    .spin-inner { grid-template-columns: 1fr; gap: 40px; }
+    .spin-info h2 { font-size: 52px; }
+    .member-section { padding: 70px 24px; }
+    .member-grid { grid-template-columns: 1fr; }
+    .events-section { padding: 70px 24px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .my-codes-section { padding: 60px 24px; }
+  }
+
+  @media (max-width: 768px) {
+    .topnav { padding: 12px 16px; }
+    .nav-links { display: none; }
+    .nav-actions { gap: 8px; }
+    .nav-btn-cta { padding: 10px 16px; font-size: 11px; }
+    .hero { height: 80vh; min-height: 600px; }
+    .poster-title .line1 { font-size: 18vw; }
+    .poster-title .line2 { font-size: 15vw; }
+    .poster-subtitle { font-size: 18px; letter-spacing: 0.2em; }
+    .poster-subtitle::before, .poster-subtitle::after { width: 30px; }
+    .wc-badge-large { top: 80px; left: 20px; padding: 8px 12px; gap: 10px; }
+    .wc-badge-text strong { font-size: 11px; }
+    .wc-badge-text span { font-size: 8px; }
+    .poster-wordmark { font-size: 18px; padding: 6px 18px; top: 90px; }
+    .person-silhouette { width: 220px; height: 360px; }
+    .person-body { width: 170px; height: 280px; }
+    .person-head { width: 90px; height: 100px; top: 30px; }
+    .person-body::before { width: 32px; height: 32px; font-size: 10px; top: 80px; right: 20px; }
+    .food-box { width: 100px; height: 80px; top: 110px; }
+    .food-box::before { font-size: 40px; top: -20px; }
+    .food-box::after { font-size: 12px; bottom: 10px; }
+    .macaw-deco { width: 100px; height: 100px; right: 5%; top: 130px; }
+    .leaf.l1 { width: 180px; bottom: 60px; left: -40px; }
+    .leaf.l2 { width: 200px; bottom: 120px; right: -50px; }
+    .leaf.l3 { display: none; }
+    .crowd { width: 150px; height: 120px; bottom: 100px; }
+    .countdown-info h2 { font-size: 32px; }
+    .cd-num { font-size: 36px; }
+    .cd-box { padding: 20px 8px 16px; }
+    .cd-lbl { font-size: 9px; }
+    .section-head h2 { font-size: 36px; }
+    .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .menu-card { padding: 16px; }
+    .menu-card-img { height: 100px; font-size: 50px; }
+    .menu-card h4 { font-size: 16px; }
+    .menu-card .price { font-size: 18px; }
+    .spin-info h2 { font-size: 38px; }
+    .prizes-grid { grid-template-columns: 1fr 1fr; }
+    .wheel-container { width: 280px; height: 280px; }
+    .redeem-card { padding: 28px 22px; }
+    .code-input { font-size: 16px; padding: 14px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .member-card-big { padding: 24px; aspect-ratio: auto; }
+    .mc-name { font-size: 20px; }
+    .mc-stars .num { font-size: 36px; }
+    .tier-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .modal-winning-title { font-size: 36px; }
+    .demo-hint { max-width: 200px; bottom: 12px; left: 12px; }
+    .events-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Fade-up animation on scroll */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ TOP NAVBAR ============================ -->
+<nav class="topnav transparent" id="topnav">
+  <a href="#home" class="nav-logo">
+    <div class="logo-mark">
+      <!-- 🖼️ LOGO IMAGE — Auto-detect jpg/png -->
+      <img data-img="logo" alt="Wingstop Logo" />
+      <svg viewBox="0 0 100 100" fill="currentColor" style="display:none;">
+        <g>
+          <path d="M5 50 Q15 35 30 38 Q22 44 18 50 Q24 48 32 50 Q26 54 22 58 Q30 56 36 56 Z"/>
+          <path d="M95 50 Q85 35 70 38 Q78 44 82 50 Q76 48 68 50 Q74 54 78 58 Q70 56 64 56 Z"/>
+          <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="3"/>
+          <text x="50" y="48" text-anchor="middle" font-family="Anton" font-size="10" font-weight="bold">WING</text>
+          <text x="50" y="58" text-anchor="middle" font-family="Anton" font-size="10" font-weight="bold">STOP</text>
+        </g>
+      </svg>
+    </div>
+    WINGSTOP
+  </a>
+
+  <div class="nav-links">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#order" class="nav-link">Order</a>
+    <a href="#spin" class="nav-link">Spin & Win</a>
+    <a href="#member" class="nav-link">Brasil Club</a>
+    <a href="#events" class="nav-link">Events</a>
+  </div>
+
+  <div class="nav-actions">
+    <div class="nav-btn-cart" id="cart-btn">
+      <svg viewBox="0 0 24 24"><path d="M6 2l3 6h6l3-6"/><path d="M6 2v18a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2"/></svg>
+      <span class="badge hidden" id="cart-badge">0</span>
+    </div>
+    <a href="#order" class="nav-btn-cta">Order Now</a>
+  </div>
+</nav>
+
+<!-- ============================ HERO POSTER ============================ -->
+<section id="home" class="hero has-image">
+  <!-- 🖼️ HERO POSTER IMAGE — Auto-detect jpg/png -->
+  <img data-img="hero-poster" alt="Wingstop Brasil World Cup 2026" class="hero-poster-img" />
+  <div class="hero-overlay"></div>
+
+  <div class="pitch-stripe"></div>
+  <div class="stadium-curve"></div>
+  <div class="stadium-arch"></div>
+
+  <!-- FIFA badge top-left -->
+  <div class="wc-badge-large">
+<img src="https://kenhhot.vn/stores/news_dataimages/bichthuy/052023/19/15/world-cup-2026-logo120230519150125.9574680.jpg?rt=20230519150214" alt="FIFA World Cup 2026" style="width: 50px; height: 50px; object-fit: contain;" />    <div class="wc-badge-text">
+      <strong>FIFA WORLD CUP 2026</strong>
+      <span>USA · CANADA · MEXICO</span>
+    </div>
+  </div>
+
+  <div class="poster-wordmark">WINGSTOP</div>
+
+  <!-- Macaw decoration -->
+  <div class="macaw-deco">
+    <svg viewBox="0 0 100 100" fill="none">
+      <ellipse cx="55" cy="55" rx="22" ry="28" fill="#002776"/>
+      <path d="M 35 50 Q 40 60 50 65 Q 45 50 40 45 Z" fill="#FFCB05"/>
+      <circle cx="40" cy="40" r="14" fill="#002776"/>
+      <path d="M 28 38 L 22 42 L 28 46 Z" fill="#000"/>
+      <circle cx="35" cy="36" r="2.5" fill="white"/>
+      <circle cx="35" cy="36" r="1.2" fill="black"/>
+      <path d="M 60 50 Q 80 45 85 60 Q 75 65 60 65 Z" fill="#0d4d2c"/>
+      <path d="M 65 55 Q 78 52 82 62 Q 73 64 65 62 Z" fill="#FFCB05" opacity="0.4"/>
+      <path d="M 70 70 L 90 85 L 80 80 L 88 90 L 75 80 Z" fill="#0d4d2c"/>
+    </svg>
+  </div>
+
+  <!-- Leaves -->
+  <div class="leaf l1">
+    <svg class="leaf-svg" viewBox="0 0 200 100">
+      <ellipse cx="100" cy="50" rx="90" ry="25" fill="#1c5c2a"/>
+      <path d="M 10 50 Q 50 30 100 50 Q 150 70 190 50" stroke="#0d4d2c" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="leaf l2">
+    <svg class="leaf-svg" viewBox="0 0 200 100">
+      <ellipse cx="100" cy="50" rx="90" ry="25" fill="#1c5c2a"/>
+      <path d="M 10 50 Q 50 30 100 50 Q 150 70 190 50" stroke="#0d4d2c" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="leaf l3">
+    <svg class="leaf-svg" viewBox="0 0 200 100">
+      <ellipse cx="100" cy="50" rx="90" ry="25" fill="#2d8a3e"/>
+    </svg>
+  </div>
+
+  <div class="crowd left"></div>
+  <div class="crowd right"></div>
+
+  <div class="hero-content">
+    <div></div>
+    <div class="person-silhouette">
+      <div class="person-head"></div>
+      <div class="person-body"></div>
+      <div class="food-box"></div>
+    </div>
+    <div></div>
+  </div>
+
+</div>
+  <div class="poster-subtitle">SPREAD YOUR WINGS</div>
+
+  <div class="scroll-cue">Scroll Down</div>
+</section>
+
+<!-- ============================ COUNTDOWN ============================ -->
+<section class="countdown-banner">
+  <div class="countdown-inner">
+    <div class="countdown-info fade-up">
+      <div class="pill">
+        <span class="pulse-dot"></span> Live Giveaway Ends In
+      </div>
+      <h2>
+        Win World Cup
+        <span class="accent">Tickets!</span>
+      </h2>
+      <p>Order any Wingstop combo, get a unique code, and spin the lucky wheel for your chance to win 2 VIP tickets, sneakers, vouchers, and more.</p>
+      <div class="cta-row">
+        <a href="#order" class="btn-primary">
+          Order Now
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#spin" class="btn-ghost">Learn How</a>
+      </div>
+    </div>
+
+    <div class="countdown-grid fade-up">
+      <div class="cd-box"><div class="cd-num" id="cd-d">42</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-h">14</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-m">38</div><div class="cd-lbl">Mins</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-s">52</div><div class="cd-lbl">Secs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ORDER ============================ -->
+<section id="order" class="section">
+  <div class="section-head fade-up">
+    <div class="eyebrow">Step 1 · Order & Get Code</div>
+    <h2>Choose Your <span class="yellow">Wings</span></h2>
+    <p>Every order generates a unique code. Use it to spin the Lucky Wheel for amazing prizes including World Cup tickets!</p>
+  </div>
+
+  <div class="menu-grid fade-up">
+    <div class="menu-card">
+      <!-- 🖼️ MÓN 1: CLASSIC WINGS — File: images/menu-classic.jpg -->
+      <div class="menu-card-img has-image">
+        <img data-img="menu-classic" alt="Classic Wings" />
+      </div>
+      <h4>Classic Wings 10pc</h4>
+      <div class="price">$12.99</div>
+      <p class="desc">Our signature wings tossed in your choice of flavor. Served with ranch.</p>
+      <button class="menu-add" data-item="Classic Wings 10pc" data-price="12.99">Add to Order</button>
+    </div>
+    <div class="menu-card">
+      <!-- 🖼️ MÓN 2: ATOMIC HOT — File: images/menu-atomic.jpg -->
+      <div class="menu-card-img has-image">
+        <img data-img="menu-atomic" alt="Atomic Hot Wings" />
+      </div>
+      <h4>Atomic Hot Wings</h4>
+      <div class="price">$14.99</div>
+      <p class="desc">Our hottest flavor. Extreme heat for the brave. Includes cooling drink.</p>
+      <button class="menu-add" data-item="Atomic Hot Wings" data-price="14.99">Add to Order</button>
+    </div>
+    <div class="menu-card">
+      <!-- 🖼️ MÓN 3: HONEY GARLIC — File: images/menu-honey.jpg -->
+      <div class="menu-card-img has-image">
+        <img data-img="menu-honey" alt="Honey Garlic Wings" />
+      </div>
+      <h4>Honey Garlic Wings</h4>
+      <div class="price">$13.99</div>
+      <p class="desc">Sweet honey meets savory garlic. Crowd favorite combo with sticky finish.</p>
+      <button class="menu-add" data-item="Honey Garlic Wings" data-price="13.99">Add to Order</button>
+    </div>
+    <div class="menu-card">
+      <!-- 🖼️ MÓN 4: LOADED FRIES — File: images/menu-fries.jpg -->
+      <div class="menu-card-img has-image">
+        <img data-img="menu-fries" alt="Loaded Fries Combo" />
+      </div>
+      <h4>Loaded Fries Combo</h4>
+      <div class="price">$8.99</div>
+      <p class="desc">Crispy fries loaded with cheese, bacon, and signature ranch dressing.</p>
+      <button class="menu-add" data-item="Loaded Fries Combo" data-price="8.99">Add to Order</button>
+    </div>
+    <div class="menu-card">
+      <!-- 🖼️ MÓN 5: LARGE DRINK — File: images/menu-drink.jpg -->
+      <div class="menu-card-img has-image">
+        <img data-img="menu-drink" alt="Large Drink" />
+      </div>
+      <h4>Large Drink</h4>
+      <div class="price">$3.99</div>
+      <p class="desc">22oz fountain drink, free refills in-store. Pick your favorite flavor.</p>
+      <button class="menu-add" data-item="Large Drink" data-price="3.99">Add to Order</button>
+    </div>
+    <div class="menu-card">
+      <!-- 🖼️ MÓN 6: BRASIL SPICE — File: images/menu-brasil.jpg -->
+      <div class="menu-card-img has-image">
+        <img data-img="menu-brasil" alt="Brasil Spice Combo" />
+      </div>
+      <h4>Brasil Spice Combo</h4>
+      <div class="price">$18.99</div>
+      <p class="desc">Limited edition! 12pc wings with Brasil-inspired spice blend + fries.</p>
+      <button class="menu-add" data-item="Brasil Spice Combo" data-price="18.99">Add to Order</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SPIN SECTION ============================ -->
+<section id="spin" class="spin-section">
+  <div class="spin-inner">
+    <div class="spin-info fade-up">
+      <div class="eyebrow" style="color: var(--ws-green-house);">Step 2 · Lucky Wheel</div>
+      <h2>
+        Spin The
+        <span class="stroke">Wheel</span>
+      </h2>
+      <p>Enter your order code below to unlock the Lucky Wheel. Four amazing prizes await — including a pair of World Cup tickets worth $5,000!</p>
+
+      <div class="prizes-grid">
+        <div class="prize-tile">
+          <div class="prize-tile-emoji">🎟️</div>
+          <div class="prize-tile-name">2× WC Tickets</div>
+          <div class="prize-tile-value">Value $5,000</div>
+        </div>
+        <div class="prize-tile">
+          <div class="prize-tile-emoji">🎫</div>
+          <div class="prize-tile-name">100% Voucher</div>
+          <div class="prize-tile-value">Value $25</div>
+        </div>
+        <div class="prize-tile">
+          <div class="prize-tile-emoji">👟</div>
+          <div class="prize-tile-name">Brasil Shoes</div>
+          <div class="prize-tile-value">Value $120</div>
+        </div>
+        <div class="prize-tile">
+          <div class="prize-tile-emoji">🍀</div>
+          <div class="prize-tile-name">Good Luck</div>
+          <div class="prize-tile-value">+50⭐ Points</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="redeem-card fade-up">
+      <div class="redeem-pill">
+        <span class="pulse-dot"></span> ENTER CODE
+      </div>
+      <h3>Activate Your Spin</h3>
+      <div class="code-input-wrap">
+        <input type="text" class="code-input" id="code-input" placeholder="WS-XXXX-XXXX" maxlength="20" autocomplete="off" />
+        <div class="code-format-hint">Format: WS-XXXX-XXXX</div>
+      </div>
+      <button class="redeem-btn" id="redeem-btn">
+        <span id="redeem-btn-text">Activate Spin</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="redeem-btn-icon"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.7 1 6.3 2.7L21 3v6h-6"/></svg>
+      </button>
+      <p style="font-size: 11px; color: rgba(255,255,255,0.5); text-align: center; margin-top: 16px;">
+        Try test codes: <strong style="color:var(--brasil-yellow);">WS-TICKET</strong>, <strong style="color:var(--brasil-yellow);">WS-VOUCHER</strong>, <strong style="color:var(--brasil-yellow);">WS-SHOES</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MY CODES ============================ -->
+<section class="my-codes-section">
+  <div class="my-codes-inner">
+    <div class="section-head left fade-up">
+      <div class="eyebrow">Your Collection</div>
+      <h2>My Codes</h2>
+      <p>Codes from your past orders. Click any active code to load it into the wheel.</p>
+    </div>
+    <div class="codes-list fade-up" id="codes-list"></div>
+  </div>
+</section>
+
+<!-- ============================ MEMBERSHIP ============================ -->
+<section id="member" class="member-section">
+  <div class="member-inner">
+    <div class="section-head fade-up">
+      <div class="eyebrow" style="color: var(--brasil-yellow);">Step 3 · Loyalty Rewards</div>
+      <h2>Brasil <span class="yellow">Club</span></h2>
+      <p>Earn ⭐ Stars on every order. Unlock exclusive rewards and climb the tiers from Bronze all the way to Diamond.</p>
+    </div>
+
+    <div class="member-grid">
+      <!-- Big member card -->
+      <div class="member-card-big fade-up">
+        <div class="mc-head">
+          <div class="mc-logo">
+            <div class="mc-logo-mark">B</div>
+            <div class="mc-logo-name">
+              BRASIL CLUB
+              <span>World Cup 2026</span>
+            </div>
+          </div>
+          <div class="mc-tier-badge">⭐ Silver</div>
+        </div>
+        <div class="mc-number">•••• •••• •••• 2026</div>
+        <div class="mc-foot">
+          <div class="mc-name">
+            João Da Silva
+            <span>Member since 2024</span>
+          </div>
+          <div class="mc-stars">
+            <div class="num" id="hero-pts">650</div>
+            <div class="lbl">⭐ Stars</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier progress -->
+      <div class="tier-progress-big fade-up">
+        <div class="tp-head">
+          <div class="tp-current">
+            Silver Tier
+            <span>Your current level</span>
+          </div>
+          <div class="tp-next-tier">Next: Gold</div>
+        </div>
+
+        <div class="tp-bar">
+          <div class="tp-bar-fill" id="bar-fill"></div>
+        </div>
+        <div class="tp-progress-text">
+          <span class="left"><strong id="cur-pts">650</strong> ⭐</span>
+          <span class="right"><strong id="needed-pts">350</strong> more to <strong>Gold</strong></span>
+        </div>
+
+        <div class="tier-grid">
+          <div class="tier-cell completed">
+            <div class="tier-cell-icon">🥉</div>
+            <div class="tier-cell-name">Bronze</div>
+            <div class="tier-cell-pts">0–200⭐</div>
+          </div>
+          <div class="tier-cell current">
+            <div class="tier-cell-icon">⭐</div>
+            <div class="tier-cell-name">Silver</div>
+            <div class="tier-cell-pts">200–1K⭐</div>
+          </div>
+          <div class="tier-cell locked">
+            <div class="tier-cell-icon">🥇</div>
+            <div class="tier-cell-name">Gold</div>
+            <div class="tier-cell-pts">1K–5K⭐</div>
+          </div>
+          <div class="tier-cell locked">
+            <div class="tier-cell-icon">💎</div>
+            <div class="tier-cell-name">Diamond</div>
+            <div class="tier-cell-pts">5K+⭐</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="fade-up">
+      <h3 style="font-family: 'Anton', sans-serif; font-size: 32px; text-transform: uppercase; margin-bottom: 24px; color: var(--brasil-yellow);">Your Benefits</h3>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🍗</div>
+          <div class="benefit-info">
+            <div class="benefit-title">10% Off Every Order</div>
+            <div class="benefit-desc">Automatic discount at checkout</div>
+          </div>
+          <div class="benefit-status unlocked">Active</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎂</div>
+          <div class="benefit-info">
+            <div class="benefit-title">Birthday Wings</div>
+            <div class="benefit-desc">6pc free during birthday month</div>
+          </div>
+          <div class="benefit-status unlocked">Active</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎟️</div>
+          <div class="benefit-info">
+            <div class="benefit-title">Priority Events</div>
+            <div class="benefit-desc">Early ticket booking access</div>
+          </div>
+          <div class="benefit-status unlocked">Active</div>
+        </div>
+        <div class="benefit-card locked">
+          <div class="benefit-icon">🚚</div>
+          <div class="benefit-info">
+            <div class="benefit-title">Free Delivery</div>
+            <div class="benefit-desc">No shipping fees, all orders</div>
+          </div>
+          <div class="benefit-status locked">Gold</div>
+        </div>
+        <div class="benefit-card locked">
+          <div class="benefit-icon">👕</div>
+          <div class="benefit-info">
+            <div class="benefit-title">Brasil Jersey 2026</div>
+            <div class="benefit-desc">Free official jersey at Gold tier</div>
+          </div>
+          <div class="benefit-status locked">Gold</div>
+        </div>
+        <div class="benefit-card locked">
+          <div class="benefit-icon">💎</div>
+          <div class="benefit-info">
+            <div class="benefit-title">VIP Stadium Box</div>
+            <div class="benefit-desc">Exclusive World Cup access</div>
+          </div>
+          <div class="benefit-status locked">Diamond</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EVENTS ============================ -->
+<section id="events" class="events-section">
+  <div class="events-inner">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Mark Your Calendar</div>
+      <h2>Upcoming <span class="yellow">Events</span></h2>
+      <p>Join us for watch parties, store openings, and exclusive giveaway draws throughout the World Cup season.</p>
+    </div>
+
+    <div class="events-grid fade-up">
+      <div class="event-card green" data-event="watch-party">
+        <div class="event-banner has-image">
+          <!-- 🖼️ EVENT 1: WATCH PARTY — File: images/event-watch-party.jpg -->
+          <img data-img="event-watch-party" alt="Football Watch Party" class="event-banner-img" />
+          <div class="event-banner-deco"></div>
+          <div class="event-banner-icon">⚽</div>
+          <div class="event-pill-date">JUN 14</div>
+          <div class="event-pill-status">Free</div>
+        </div>
+        <div class="event-content">
+          <h3>Football Watch Party</h3>
+          <div class="event-meta">
+            <span>📍 All Stores</span>
+            <span class="dot"></span>
+            <span>7:00 PM</span>
+          </div>
+          <button class="event-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="event-card yellow" data-event="flagship">
+        <div class="event-banner has-image">
+          <!-- 🖼️ EVENT 2: FLAGSHIP — File: images/event-flagship.jpg -->
+          <img data-img="event-flagship" alt="Flagship Open Event" class="event-banner-img" />
+          <div class="event-banner-deco"></div>
+          <div class="event-banner-icon">🎉</div>
+          <div class="event-pill-date">JUN 25</div>
+          <div class="event-pill-status">VIP</div>
+        </div>
+        <div class="event-content">
+          <h3>Flagship Open Event</h3>
+          <div class="event-meta">
+            <span>📍 SaoPaulo Flagship</span>
+            <span class="dot"></span>
+            <span>10:00 AM</span>
+          </div>
+          <button class="event-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="event-card blue" data-event="draw">
+        <div class="event-banner has-image">
+          <!-- 🖼️ EVENT 3: TICKET DRAW — File: images/event-draw.jpg -->
+          <img data-img="event-draw" alt="Live Ticket Draw" class="event-banner-img" />
+          <div class="event-banner-deco"></div>
+          <div class="event-banner-icon">🎟️</div>
+          <div class="event-pill-date">JUL 02</div>
+          <div class="event-pill-status">HOT</div>
+        </div>
+        <div class="event-content">
+          <h3>Live Ticket Draw</h3>
+          <div class="event-meta">
+            <span>📍 Live on App</span>
+            <span class="dot"></span>
+            <span>9:00 PM</span>
+          </div>
+          <button class="event-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="event-card red" data-event="contest">
+        <div class="event-banner has-image">
+          <!-- 🖼️ EVENT 4: WINGS CONTEST — File: images/event-contest.jpg -->
+          <img data-img="event-contest" alt="Wings Eating Contest" class="event-banner-img" />
+          <div class="event-banner-deco"></div>
+          <div class="event-banner-icon">🍗</div>
+          <div class="event-pill-date">JUL 10</div>
+          <div class="event-pill-status">$500</div>
+        </div>
+        <div class="event-content">
+          <h3>Wings Eating Contest</h3>
+          <div class="event-meta">
+            <span>📍 Saigon Flagship</span>
+            <span class="dot"></span>
+            <span>6:00 PM</span>
+          </div>
+          <button class="event-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="event-card green" data-event="dj">
+        <div class="event-banner has-image">
+          <!-- 🖼️ EVENT 5: DJ NIGHT — File: images/event-dj.jpg -->
+          <img data-img="event-dj" alt="Brasil DJ Night" class="event-banner-img" />
+          <div class="event-banner-deco"></div>
+          <div class="event-banner-icon">🎵</div>
+          <div class="event-pill-date">JUL 18</div>
+          <div class="event-pill-status">Limited</div>
+        </div>
+        <div class="event-content">
+          <h3>Brasil DJ Night</h3>
+          <div class="event-meta">
+            <span>📍 District 1 Store</span>
+            <span class="dot"></span>
+            <span>8:00 PM</span>
+          </div>
+          <button class="event-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="event-card yellow" data-event="final">
+        <div class="event-banner has-image">
+          <!-- 🖼️ EVENT 6: FINAL GALA — File: images/event-final.jpg -->
+          <img data-img="event-final" alt="Final Watch Party Gala" class="event-banner-img" />
+          <div class="event-banner-deco"></div>
+          <div class="event-banner-icon">🏆</div>
+          <div class="event-pill-date">JUL 19</div>
+          <div class="event-pill-status">Premium</div>
+        </div>
+        <div class="event-content">
+          <h3>Final Watch Party Gala</h3>
+          <div class="event-meta">
+            <span>📍 Grand Hall</span>
+            <span class="dot"></span>
+            <span>8:00 PM</span>
+          </div>
+          <button class="event-btn">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">WINGSTOP</div>
+      <div class="footer-tagline">ABRE AS ASAS · SPREAD YOUR WINGS</div>
+      <p class="footer-desc">Official partner of Brasil's national team at FIFA World Cup 2026. Order, code, spin, and win amazing prizes including VIP tickets.</p>
+      <div class="social-icons" style="margin-top: 24px;">
+        <a href="#" data-toast="📘 Facebook">f</a>
+        <a href="#" data-toast="📷 Instagram">📷</a>
+        <a href="#" data-toast="🐦 Twitter">𝕏</a>
+        <a href="#" data-toast="📺 YouTube">▶</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li>Menu</li>
+        <li>Locations</li>
+        <li>Catering</li>
+        <li>Gift Cards</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Campaign</h5>
+      <ul>
+        <li>How It Works</li>
+        <li>Prize Rules</li>
+        <li>Brasil Club</li>
+        <li>FAQs</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li>Contact Us</li>
+        <li>Help Center</li>
+        <li>Terms of Service</li>
+        <li>Privacy Policy</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Wingstop. All rights reserved. Not affiliated with FIFA.</span>
+    <span>🇧🇷 Made for Brasil fans worldwide</span>
+  </div>
+</footer>
+
+<!-- ============================ TOAST ============================ -->
+<div class="toast" id="toast">Welcome!</div>
+
+<!-- ============================ DEMO HINT ============================ -->
+<div class="demo-hint" id="demo-hint">
+  <button class="close-hint" onclick="document.getElementById('demo-hint').style.display='none'">×</button>
+  <strong>🎯 Try the demo:</strong><br/>
+  1. Order any item → get a code<br/>
+  2. Enter code → spin the wheel<br/>
+  3. Test codes: <strong>WS-TICKET</strong>, <strong>WS-VOUCHER</strong>, <strong>WS-SHOES</strong>, <strong>WS-LUCK</strong>
+</div>
+
+<!-- ============================ MODALS ============================ -->
+
+<!-- Wheel Modal -->
+<div class="modal-overlay" id="wheel-modal">
+  <div class="modal wheel-modal">
+    <button class="wheel-modal-close" id="close-wheel">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="wheel-modal-tag">⭐ LUCKY WHEEL ⭐</div>
+    <div class="wheel-modal-title">Spin to Win!</div>
+    <div class="wheel-modal-sub">Try your luck for amazing prizes</div>
+
+    <div class="wheel-container">
+      <div class="wheel-pointer"></div>
+      <div class="wheel" id="wheel">
+        <svg class="wheel-svg" viewBox="0 0 200 200">
+          <path d="M 100 100 L 100 0 A 100 100 0 0 1 186.6 50 Z" fill="#c82014"/>
+          <path d="M 100 100 L 186.6 50 A 100 100 0 0 1 186.6 150 Z" fill="#0d4d2c"/>
+          <path d="M 100 100 L 186.6 150 A 100 100 0 0 1 100 200 Z" fill="#FFCB05"/>
+          <path d="M 100 100 L 100 200 A 100 100 0 0 1 13.4 150 Z" fill="#0d4d2c"/>
+          <path d="M 100 100 L 13.4 150 A 100 100 0 0 1 13.4 50 Z" fill="#002776"/>
+          <path d="M 100 100 L 13.4 50 A 100 100 0 0 1 100 0 Z" fill="#0d4d2c"/>
+
+          <g stroke="white" stroke-width="1.5" opacity="0.6">
+            <line x1="100" y1="100" x2="100" y2="0"/>
+            <line x1="100" y1="100" x2="186.6" y2="50"/>
+            <line x1="100" y1="100" x2="186.6" y2="150"/>
+            <line x1="100" y1="100" x2="100" y2="200"/>
+            <line x1="100" y1="100" x2="13.4" y2="150"/>
+            <line x1="100" y1="100" x2="13.4" y2="50"/>
+          </g>
+
+          <g transform="rotate(30 100 100)">
+            <text x="100" y="38" text-anchor="middle" fill="white" font-family="Anton" font-size="11" font-weight="bold">2× WC</text>
+            <text x="100" y="50" text-anchor="middle" fill="white" font-family="Anton" font-size="11" font-weight="bold">TICKETS</text>
+            <text x="100" y="68" text-anchor="middle" fill="white" font-size="14">🎟️</text>
+          </g>
+          <g transform="rotate(90 100 100)">
+            <text x="100" y="38" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">GOOD</text>
+            <text x="100" y="49" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">LUCK</text>
+            <text x="100" y="68" text-anchor="middle" fill="white" font-size="14">🍀</text>
+          </g>
+          <g transform="rotate(150 100 100)">
+            <text x="100" y="38" text-anchor="middle" fill="#1E3932" font-family="Anton" font-size="10" font-weight="bold">100% OFF</text>
+            <text x="100" y="49" text-anchor="middle" fill="#1E3932" font-family="Anton" font-size="10" font-weight="bold">VOUCHER</text>
+            <text x="100" y="68" text-anchor="middle" fill="#1E3932" font-size="14">🎫</text>
+          </g>
+          <g transform="rotate(210 100 100)">
+            <text x="100" y="38" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">GOOD</text>
+            <text x="100" y="49" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">LUCK</text>
+            <text x="100" y="68" text-anchor="middle" fill="white" font-size="14">🍀</text>
+          </g>
+          <g transform="rotate(270 100 100)">
+            <text x="100" y="38" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">SPORT</text>
+            <text x="100" y="49" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">SHOES</text>
+            <text x="100" y="68" text-anchor="middle" fill="white" font-size="14">👟</text>
+          </g>
+          <g transform="rotate(330 100 100)">
+            <text x="100" y="38" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">GOOD</text>
+            <text x="100" y="49" text-anchor="middle" fill="white" font-family="Anton" font-size="10" font-weight="bold">LUCK</text>
+            <text x="100" y="68" text-anchor="middle" fill="white" font-size="14">🍀</text>
+          </g>
+
+          <g fill="#FFCB05">
+            <circle cx="100" cy="6" r="3"/>
+            <circle cx="183" cy="50" r="3"/>
+            <circle cx="183" cy="150" r="3"/>
+            <circle cx="100" cy="194" r="3"/>
+            <circle cx="17" cy="150" r="3"/>
+            <circle cx="17" cy="50" r="3"/>
+          </g>
+        </svg>
+      </div>
+      <div class="wheel-center">
+        <div class="wheel-center-logo">
+          WINGSTOP
+          <small>2026</small>
+        </div>
+      </div>
+    </div>
+
+    <button class="spin-action-btn" id="do-spin">🎰 SPIN THE WHEEL</button>
+  </div>
+</div>
+
+<!-- Win Tickets Modal -->
+<div class="modal-overlay" id="win-tickets-modal">
+  <div class="modal winning">
+    <div class="trophy-anim">🏆</div>
+    <div class="modal-winning-tag">🎉 JACKPOT WIN 🎉</div>
+    <div class="modal-winning-title">You Won<br/>World Cup Tickets!</div>
+    <div class="modal-winning-sub">2 VIP Tickets to watch Brasil live!</div>
+
+    <div class="prize-card-modal">
+      <div class="prize-card-icon">🎟️</div>
+      <div class="prize-card-name">2× Brasil VIP Tickets</div>
+      <div class="prize-card-desc">FIFA World Cup 2026 · BRA vs ARG<br/>Group Stage Match · SoFi Stadium</div>
+      <div class="prize-card-meta">
+        <span>Value: <strong>$5,000</strong></span>
+        <span>Date: <strong>JUN 14, 2026</strong></span>
+      </div>
+    </div>
+
+    <div class="modal-winning-body">
+      🏆 Our team will contact you within 24 hours with claim instructions. Get ready to cheer for Brasil!
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-btn secondary" data-close-modal>Close</button>
+      <button class="modal-btn primary" data-toast="📤 Shared!">Share Win 🎊</button>
+    </div>
+  </div>
+</div>
+
+<!-- Win Voucher Modal -->
+<div class="modal-overlay" id="win-voucher-modal">
+  <div class="modal winning" style="background: linear-gradient(160deg, var(--brasil-yellow) 0%, var(--brasil-yellow-dark) 100%);">
+    <div class="trophy-anim">🎫</div>
+    <div class="modal-winning-tag">🎉 LUCKY WIN 🎉</div>
+    <div class="modal-winning-title">100% OFF<br/>Voucher!</div>
+    <div class="modal-winning-sub">Your next order is on us!</div>
+
+    <div class="prize-card-modal">
+      <div class="prize-card-icon">🎫</div>
+      <div class="prize-card-name">FREE Wingstop Combo</div>
+      <div class="prize-card-desc">Get any combo (up to $25) absolutely free on your next order at any Wingstop location.</div>
+      <div class="prize-card-meta">
+        <span>Value: <strong>$25</strong></span>
+        <span>Valid: <strong>30 days</strong></span>
+      </div>
+    </div>
+
+    <div class="modal-winning-body">
+      🎁 The voucher has been added to your account. Apply at checkout next time you order.
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-btn secondary" data-close-modal>Close</button>
+      <button class="modal-btn primary" data-close-modal data-scroll="#order">Use Now 🍗</button>
+    </div>
+  </div>
+</div>
+
+<!-- Win Shoes Modal -->
+<div class="modal-overlay" id="win-shoes-modal">
+  <div class="modal winning" style="background: linear-gradient(160deg, var(--brasil-blue) 0%, var(--brasil-blue-deep) 100%); color: white;">
+    <div class="trophy-anim">👟</div>
+    <div class="modal-winning-tag" style="background: var(--brasil-yellow); color: var(--ws-green-house);">🎉 NICE WIN 🎉</div>
+    <div class="modal-winning-title" style="color: var(--brasil-yellow);">Brasil Sport<br/>Shoes!</div>
+    <div class="modal-winning-sub" style="color: white;">Limited edition sneakers</div>
+
+    <div class="prize-card-modal" style="background: rgba(255,255,255,0.1);">
+      <div class="prize-card-icon">👟</div>
+      <div class="prize-card-name">Brasil 2026 Edition</div>
+      <div class="prize-card-desc">Limited edition sport shoes featuring Brasil flag colors. Choose your size at checkout.</div>
+      <div class="prize-card-meta">
+        <span>Value: <strong>$120</strong></span>
+        <span>Sizes: <strong>EU 38–46</strong></span>
+      </div>
+    </div>
+
+    <div class="modal-winning-body" style="color: rgba(255,255,255,0.9);">
+      👟 We'll send size selection details to your email within 24 hours.
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-btn secondary" data-close-modal style="background: rgba(255,255,255,0.15); color: white;">Close</button>
+      <button class="modal-btn primary" data-toast="📦 Shipping in 3-5 days!">Track Shipping</button>
+    </div>
+  </div>
+</div>
+
+<!-- No Luck Modal -->
+<div class="modal-overlay" id="lose-modal">
+  <div class="modal no-luck">
+    <div class="no-luck-icon">🍀</div>
+    <h3>Good Luck Next Time!</h3>
+    <p>The wheel didn't land on a prize this time. But don't worry, we've got something for you!</p>
+
+    <div class="consolation">
+      🎁 Consolation: <strong>+50 Star Points</strong> added to your Brasil Club account
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-btn secondary" data-close-modal>Close</button>
+      <button class="modal-btn primary" data-close-modal data-scroll="#order">Order Again</button>
+    </div>
+  </div>
+</div>
+
+<!-- Invalid Modal -->
+<div class="modal-overlay" id="invalid-modal">
+  <div class="modal invalid">
+    <div class="invalid-icon">❌</div>
+    <h3 id="invalid-title">Invalid Code</h3>
+    <p id="invalid-message">This code does not exist or has already been used. Please check and try again.</p>
+    <div class="modal-btns">
+      <button class="modal-btn secondary" data-close-modal>Try Again</button>
+      <button class="modal-btn primary" data-close-modal data-scroll="#order">Order Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============== EVENT DETAIL MODAL ============== -->
+<div class="modal-overlay" id="event-detail-modal">
+  <div class="modal event-detail-modal">
+    <div class="ed-header" id="ed-header">
+      <img id="ed-header-img" class="ed-header-img" />
+      <div class="ed-header-emoji" id="ed-header-emoji">⚽</div>
+      <div class="ed-header-overlay"></div>
+      <button class="ed-close" data-close-modal>✕</button>
+      <div class="ed-header-info">
+        <div class="ed-date-pill" id="ed-date-pill">JUN 14 · 7:00 PM</div>
+        <div class="ed-title" id="ed-title">Event Title</div>
+      </div>
+    </div>
+
+    <div class="ed-body" id="ed-body">
+      <!-- Content dynamically injected by JS based on event type -->
+    </div>
+  </div>
+</div>
+
+<!-- Order Success Modal -->
+<div class="modal-overlay" id="order-success-modal">
+  <div class="modal order-success">
+    <div class="order-success-icon">✓</div>
+    <h3>Order Confirmed!</h3>
+    <p>Your delicious wings are on the way<br/>Total: <strong id="order-total">$0.00</strong> · Earned <strong style="color: var(--ws-green-accent);">+<span id="earned-pts">0</span>⭐</strong></p>
+
+    <div class="receipt-card">
+      <h4>🎟️ Your Lucky Code</h4>
+      <p>Use this to spin the lucky wheel!</p>
+      <div class="new-code-display" id="new-code">WS-XXXX-XXXX</div>
+      <div style="font-size: 11px; color: var(--ink-soft);">One-time use only</div>
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-btn secondary" data-close-modal>Later</button>
+      <button class="modal-btn primary" id="goto-spin">Spin Now 🎰</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ============ Event Detail Builders (6 unique designs) ============
+
+  // Reusable Brasil map SVG
+  function brasilMap(pins) {
+    const allPins = {
+      'sao-paulo': { x: 200, y: 200, name: 'São Paulo', textOffset: { x: 0, y: 25 }, anchor: 'middle' },
+      'rio': { x: 230, y: 185, name: 'Rio', textOffset: { x: 10, y: -7 }, anchor: 'start' },
+      'salvador': { x: 245, y: 130, name: 'Salvador', textOffset: { x: 10, y: -6 }, anchor: 'start' },
+      'brasilia': { x: 195, y: 155, name: 'Brasília', textOffset: { x: 0, y: -7 }, anchor: 'middle' },
+      'fortaleza': { x: 240, y: 90, name: 'Fortaleza', textOffset: { x: 0, y: -10 }, anchor: 'middle' },
+      'manaus': { x: 155, y: 95, name: 'Manaus', textOffset: { x: 0, y: -10 }, anchor: 'middle' },
+      'porto-alegre': { x: 180, y: 235, name: 'Porto Alegre', textOffset: { x: 0, y: 20 }, anchor: 'middle' }
+    };
+    const pinsHTML = pins.map(key => {
+      const p = allPins[key];
+      if (!p) return '';
+      return `<g class="map-pin" data-city="${key}">
+        <circle class="outer" cx="${p.x}" cy="${p.y}" r="10" fill="#FFCB05" opacity="0.4"/>
+        <circle cx="${p.x}" cy="${p.y}" r="6" fill="#c82014"/>
+        <circle cx="${p.x}" cy="${p.y}" r="2.5" fill="white"/>
+        <text x="${p.x + p.textOffset.x}" y="${p.y + p.textOffset.y}" text-anchor="${p.anchor}" font-family="Manrope" font-size="9" font-weight="700" fill="#1E3932">${p.name}</text>
+      </g>`;
+    }).join('');
+    return `<div class="brasil-map">
+      <svg class="brasil-map-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 120 40 Q 140 30 170 35 Q 200 32 220 45 Q 250 50 270 70 Q 290 85 295 110 Q 305 130 300 155 Q 295 180 280 200 Q 270 220 255 235 Q 235 250 210 248 Q 190 250 170 245 Q 145 240 125 225 Q 105 210 100 185 Q 90 165 95 140 Q 100 115 110 90 Q 115 65 120 40 Z" fill="#d4e9e2" stroke="#0d4d2c" stroke-width="2" opacity="0.7" />
+        <path d="M 150 80 Q 180 75 210 85 M 130 130 Q 170 125 210 135 M 140 180 Q 180 175 220 185" stroke="#0d4d2c" stroke-width="0.5" fill="none" opacity="0.3" />
+        ${pinsHTML}
+        <text x="200" y="20" text-anchor="middle" font-family="Anton" font-size="14" fill="#0d4d2c">🇧🇷 BRASIL · WINGSTOP LOCATIONS</text>
+      </svg>
+    </div>`;
+  }
+
+  function locationsList(locations) {
+    return `<div class="ed-locations">${locations.map(loc => `
+      <div class="loc-card">
+        <div class="loc-flag">${loc.flag}</div>
+        <div class="loc-info">
+          <div class="loc-city">${loc.city}</div>
+          <div class="loc-address">📍 ${loc.address}</div>
+        </div>
+        <div class="loc-contact">
+          <div class="loc-phone">${loc.phone}</div>
+          <a href="tel:${loc.phone.replace(/\s/g,'')}" class="loc-call-btn">📞 Call</a>
+        </div>
+      </div>
+    `).join('')}</div>`;
+  }
+
+  function ctaButtons(primaryText, primaryAction) {
+    return `<div class="ed-cta">
+      <button class="ed-cta-btn secondary" data-close-modal>Close</button>
+      <button class="ed-cta-btn primary" onclick="closeAllModals(); showToast('${primaryAction}');">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        ${primaryText}
+      </button>
+    </div>`;
+  }
+
+  // ============ 1. WATCH PARTY: Map + Stores + Match Schedule ============
+  function buildWatchParty() {
+    return `
+      <div class="ed-section">
+        <div class="ed-section-title">⚽ About This Event</div>
+        <p class="ed-desc">Cheer on Brasil with hundreds of fans! Watch the opening match BRA vs ARG on massive screens with the best wings, drinks, and atmosphere. Free entry, but seating is first-come first-served. Bring your jersey and your voice!</p>
+        <div class="ed-features">
+          <span class="ed-feature-pill">✓ Live HD Screens</span>
+          <span class="ed-feature-pill">✓ Free Wings Sample</span>
+          <span class="ed-feature-pill">✓ Brasil Jersey Discount</span>
+          <span class="ed-feature-pill">✓ Photo Booth</span>
+          <span class="ed-feature-pill">✓ DJ Set Halftime</span>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📅 Match Schedule</div>
+        <div class="match-list">
+          <div class="match-row">
+            <div class="match-flag-pair">🇧🇷 <span class="match-vs">VS</span> 🇦🇷</div>
+            <div class="match-info">
+              <div class="match-teams">BRASIL vs ARGENTINA</div>
+              <div class="match-time">June 14 · 7:00 PM Local Time</div>
+            </div>
+            <div class="match-stage">Group A</div>
+          </div>
+          <div class="match-row">
+            <div class="match-flag-pair">🇧🇷 <span class="match-vs">VS</span> 🇩🇪</div>
+            <div class="match-info">
+              <div class="match-teams">BRASIL vs GERMANY</div>
+              <div class="match-time">June 19 · 8:00 PM Local Time</div>
+            </div>
+            <div class="match-stage">Group A</div>
+          </div>
+          <div class="match-row">
+            <div class="match-flag-pair">🇧🇷 <span class="match-vs">VS</span> 🇫🇷</div>
+            <div class="match-info">
+              <div class="match-teams">BRASIL vs FRANCE</div>
+              <div class="match-time">June 24 · 7:00 PM Local Time</div>
+            </div>
+            <div class="match-stage">Group A</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">🗺️ Watch Party Locations</div>
+        ${brasilMap(['sao-paulo','rio','brasilia','salvador'])}
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📞 Store Details & Contact</div>
+        ${locationsList([
+          { city: 'São Paulo', flag: '🏙️', address: 'Av. Paulista 1500, Bela Vista', phone: '+55 11 3456-7890' },
+          { city: 'Rio de Janeiro', flag: '🏖️', address: 'Av. Atlântica 500, Copacabana', phone: '+55 21 2345-6789' },
+          { city: 'Brasília', flag: '🏛️', address: 'SCN Quadra 5 Bloco A, Asa Norte', phone: '+55 61 3234-5678' },
+          { city: 'Salvador', flag: '🌴', address: 'Av. Tancredo Neves 999, Caminho', phone: '+55 71 3123-4567' }
+        ])}
+      </div>
+
+      ${ctaButtons('Reserve My Spot', '✓ Spot reserved! See you June 14!')}
+    `;
+  }
+
+  // ============ 2. FLAGSHIP: Gallery + Schedule Timeline + Store Tour ============
+  function buildFlagship() {
+    return `
+      <div class="ed-section">
+        <div class="ed-section-title">🎉 Grand Opening</div>
+        <p class="ed-desc">Be part of the grand opening of our biggest Wingstop flagship store in Brasil! Special menu, celebrity guests, free wings for the first 100 customers, and exclusive merchandise. VIP entry includes a meet & greet with Brasil legends.</p>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📸 Store Gallery</div>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-gallery-img="gallery-exterior" data-emoji="🏛️">
+            <span class="emoji-fallback">🏛️</span>
+            <span class="gallery-label">EXTERIOR</span>
+          </div>
+          <div class="gallery-item" data-gallery-img="gallery-kitchen" data-emoji="🍗">
+            <span class="emoji-fallback">🍗</span>
+            <span class="gallery-label">KITCHEN</span>
+          </div>
+          <div class="gallery-item" data-gallery-img="gallery-dining" data-emoji="🪑">
+            <span class="emoji-fallback">🪑</span>
+            <span class="gallery-label">DINING</span>
+          </div>
+          <div class="gallery-item" data-gallery-img="gallery-bar" data-emoji="🍻">
+            <span class="emoji-fallback">🍻</span>
+            <span class="gallery-label">BAR</span>
+          </div>
+          <div class="gallery-item" data-gallery-img="gallery-mural" data-emoji="🎨">
+            <span class="emoji-fallback">🎨</span>
+            <span class="gallery-label">MURAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">⏰ Event Schedule</div>
+        <div class="schedule-timeline">
+          <div class="schedule-row">
+            <div class="schedule-time">10:00 AM</div>
+            <div class="schedule-content">
+              <div class="schedule-title">🎀 Ribbon Cutting Ceremony</div>
+              <div class="schedule-desc">Official opening with mayor and Wingstop CEO</div>
+            </div>
+          </div>
+          <div class="schedule-row">
+            <div class="schedule-time">11:00 AM</div>
+            <div class="schedule-content">
+              <div class="schedule-title">⭐ Celebrity Meet & Greet</div>
+              <div class="schedule-desc">Photo session with Brasil football legends (VIP only)</div>
+            </div>
+          </div>
+          <div class="schedule-row">
+            <div class="schedule-time">12:00 PM</div>
+            <div class="schedule-content">
+              <div class="schedule-title">🍗 Free Wings (First 100)</div>
+              <div class="schedule-desc">Complimentary 6pc wings for the first 100 guests</div>
+            </div>
+          </div>
+          <div class="schedule-row">
+            <div class="schedule-time">2:00 PM</div>
+            <div class="schedule-content">
+              <div class="schedule-title">🎵 Live Brazilian Music</div>
+              <div class="schedule-desc">Samba and bossa nova performance</div>
+            </div>
+          </div>
+          <div class="schedule-row">
+            <div class="schedule-time">4:00 PM</div>
+            <div class="schedule-content">
+              <div class="schedule-title">🎁 Merch Drop</div>
+              <div class="schedule-desc">Exclusive Wingstop × Brasil 2026 t-shirts on sale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📍 Flagship Store Info</div>
+        ${locationsList([
+          { city: 'São Paulo Flagship', flag: '⭐', address: 'Av. Brigadeiro Faria Lima 2000, Itaim Bibi · Free Parking · Metro: Faria Lima Station', phone: '+55 11 9999-8888' }
+        ])}
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-info-grid">
+          <div class="ed-info-card">
+            <div class="ed-info-icon">🚗</div>
+            <div class="ed-info-text">
+              <div class="ed-info-label">Parking</div>
+              <div class="ed-info-value">Free 3 hours</div>
+            </div>
+          </div>
+          <div class="ed-info-card">
+            <div class="ed-info-icon">🚇</div>
+            <div class="ed-info-text">
+              <div class="ed-info-label">Metro</div>
+              <div class="ed-info-value">Faria Lima Station</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      ${ctaButtons('Register VIP Access', '✓ VIP registration confirmed!')}
+    `;
+  }
+
+  // ============ 3. TICKET DRAW: Prize Showcase + Live Counter + Steps ============
+  function buildDraw() {
+    return `
+      <div class="ed-section">
+        <div class="ed-section-title">🎟️ The Grand Prize</div>
+        <p class="ed-desc">The moment of truth! Watch live as we draw <strong>5 lucky winners</strong> who will receive VIP tickets to the FIFA World Cup 2026. Streamed live on our app. Don't miss your chance — every code entered before July 2nd is eligible!</p>
+        <div class="prize-showcase">
+          <div class="prize-ticket-card">
+            <div class="prize-ticket-icon">🎟️</div>
+            <div class="prize-ticket-label">VIP Ticket</div>
+            <div class="prize-ticket-num">#1</div>
+          </div>
+          <div class="prize-ticket-card">
+            <div class="prize-ticket-icon">🎟️</div>
+            <div class="prize-ticket-label">VIP Ticket</div>
+            <div class="prize-ticket-num">#2</div>
+          </div>
+          <div class="prize-ticket-card">
+            <div class="prize-ticket-icon">🎟️</div>
+            <div class="prize-ticket-label">VIP Ticket</div>
+            <div class="prize-ticket-num">#3</div>
+          </div>
+          <div class="prize-ticket-card">
+            <div class="prize-ticket-icon">🎟️</div>
+            <div class="prize-ticket-label">VIP Ticket</div>
+            <div class="prize-ticket-num">#4</div>
+          </div>
+          <div class="prize-ticket-card">
+            <div class="prize-ticket-icon">🎟️</div>
+            <div class="prize-ticket-label">VIP Ticket</div>
+            <div class="prize-ticket-num">#5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="live-counter">
+          <div class="live-counter-label">🔴 LIVE · ENTRIES RIGHT NOW</div>
+          <div class="live-counter-num" id="live-entries">8,234</div>
+          <div class="live-counter-sub">people have entered the draw</div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📋 How to Enter</div>
+        <div class="steps-row">
+          <div class="step-card">
+            <div class="step-card-num">1</div>
+            <div class="step-card-icon">🍗</div>
+            <div class="step-card-title">Order Wings</div>
+          </div>
+          <div class="step-card">
+            <div class="step-card-num">2</div>
+            <div class="step-card-icon">🎫</div>
+            <div class="step-card-title">Get Your Code</div>
+          </div>
+          <div class="step-card">
+            <div class="step-card-num">3</div>
+            <div class="step-card-icon">🎰</div>
+            <div class="step-card-title">Enter & Spin</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">❓ FAQ</div>
+        <ul class="rules-list">
+          <li>Tickets include flight, hotel, and stadium access for 2 people</li>
+          <li>Draw is live-streamed on app · all entries verified by our partners</li>
+          <li>Winners contacted within 24 hours via email and phone</li>
+          <li>Must be 18+ to participate · valid ID required to claim prize</li>
+        </ul>
+      </div>
+
+      ${ctaButtons('Order Now to Enter', '✓ Heading to order page!')}
+    `;
+  }
+
+  // ============ 4. CONTEST: Leaderboard + Rules + Prize Tiers ============
+  function buildContest() {
+    return `
+      <div class="ed-section">
+        <div class="ed-section-title">🍗 The Challenge</div>
+        <p class="ed-desc">Think you can eat the most wings in 10 minutes? Prove it! Tournament-style elimination rounds with <strong>$500 cash prize</strong> for the champion, plus a year of free wings. Only 20 contestants per location — sign up early!</p>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">🏆 Prize Pool</div>
+        <div class="prize-tiers">
+          <div class="prize-tier gold">
+            <div class="prize-tier-medal">🥇</div>
+            <div class="prize-tier-amount">$500</div>
+            <div class="prize-tier-extra">+ 1 Year Free Wings<br/>+ Trophy</div>
+          </div>
+          <div class="prize-tier silver">
+            <div class="prize-tier-medal">🥈</div>
+            <div class="prize-tier-amount">$200</div>
+            <div class="prize-tier-extra">+ 6 Months Wings<br/>+ Medal</div>
+          </div>
+          <div class="prize-tier bronze">
+            <div class="prize-tier-medal">🥉</div>
+            <div class="prize-tier-amount">$100</div>
+            <div class="prize-tier-extra">+ 3 Months Wings<br/>+ Medal</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">👑 Hall of Fame 2025</div>
+        <div class="leaderboard">
+          <div class="lb-row gold">
+            <div class="lb-rank">🥇</div>
+            <div class="lb-info">
+              <div class="lb-name">Rodrigo "El Diablo" Silva</div>
+              <div class="lb-detail">2025 Champion · São Paulo</div>
+            </div>
+            <div class="lb-score">87<small>wings</small></div>
+          </div>
+          <div class="lb-row silver">
+            <div class="lb-rank">🥈</div>
+            <div class="lb-info">
+              <div class="lb-name">Marina "The Beast" Costa</div>
+              <div class="lb-detail">Runner-up · Rio de Janeiro</div>
+            </div>
+            <div class="lb-score">82<small>wings</small></div>
+          </div>
+          <div class="lb-row bronze">
+            <div class="lb-rank">🥉</div>
+            <div class="lb-info">
+              <div class="lb-name">Carlos "Hot Sauce" Mendes</div>
+              <div class="lb-detail">3rd Place · Salvador</div>
+            </div>
+            <div class="lb-score">76<small>wings</small></div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank">4</div>
+            <div class="lb-info">
+              <div class="lb-name">Felipe Santos</div>
+              <div class="lb-detail">4th · São Paulo</div>
+            </div>
+            <div class="lb-score">71<small>wings</small></div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank">5</div>
+            <div class="lb-info">
+              <div class="lb-name">Ana Beatriz Oliveira</div>
+              <div class="lb-detail">5th · Brasília</div>
+            </div>
+            <div class="lb-score">68<small>wings</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📋 Rules & Format</div>
+        <ul class="rules-list">
+          <li>10 minutes time limit · classic wings only · no dipping sauces</li>
+          <li>3 rounds: Quarterfinals (20 → 8) · Semifinals (8 → 3) · Finals (3 → 1)</li>
+          <li>Must be 18+ · sign liability waiver before competing</li>
+          <li>No vomiting allowed (auto-disqualification) · drinking water allowed</li>
+          <li>Free entry with $10 registration fee · refunded for finalists</li>
+        </ul>
+      </div>
+
+      ${ctaButtons('Sign Up to Compete', '✓ Registration submitted! Check email')}
+    `;
+  }
+
+  // ============ 5. DJ NIGHT: Lineup + Genre + Ticket Tiers ============
+  function buildDJ() {
+    return `
+      <div class="ed-section">
+        <div class="ed-section-title">🎵 The Vibe</div>
+        <p class="ed-desc">Dance the night away with the hottest Brazilian DJs! Samba beats, funk carioca, and house music — paired with our spiciest wings. Limited to 200 guests for an intimate experience. <strong>18+ event</strong>.</p>
+        <div class="ed-features">
+          <span class="ed-feature-pill">🎧 Samba</span>
+          <span class="ed-feature-pill">🔥 Funk Carioca</span>
+          <span class="ed-feature-pill">🏠 House Music</span>
+          <span class="ed-feature-pill">🌴 Bossa Nova</span>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">🎧 DJ Lineup</div>
+        <div class="dj-lineup">
+          <div class="dj-card">
+            <div class="dj-time">8:00<br/>PM</div>
+            <div class="dj-info">
+              <div class="dj-name">DJ Marina</div>
+              <div class="dj-genre">Opening Set · Bossa Nova & Lounge</div>
+            </div>
+            <div class="dj-icon">🎵</div>
+          </div>
+          <div class="dj-card">
+            <div class="dj-time">9:30<br/>PM</div>
+            <div class="dj-info">
+              <div class="dj-name">DJ Carlos Beats</div>
+              <div class="dj-genre">Prime Time · Samba Electronica</div>
+            </div>
+            <div class="dj-icon">🔥</div>
+          </div>
+          <div class="dj-card">
+            <div class="dj-time">11:00<br/>PM</div>
+            <div class="dj-info">
+              <div class="dj-name">MC Funk Master Tony</div>
+              <div class="dj-genre">Peak Hour · Funk Carioca</div>
+            </div>
+            <div class="dj-icon">⚡</div>
+          </div>
+          <div class="dj-card">
+            <div class="dj-time">1:00<br/>AM</div>
+            <div class="dj-info">
+              <div class="dj-name">DJ Tropical (Headliner)</div>
+              <div class="dj-genre">Closing Set · Deep House</div>
+            </div>
+            <div class="dj-icon">🌟</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">🎫 Get Your Tickets</div>
+        <div class="ticket-tiers">
+          <div class="ticket-tier">
+            <div class="tier-name">General</div>
+            <div class="tier-price">$15</div>
+            <div class="tier-perks">Entry only<br/>Standing</div>
+          </div>
+          <div class="ticket-tier featured">
+            <div class="tier-name">VIP</div>
+            <div class="tier-price">$35</div>
+            <div class="tier-perks">Welcome drink<br/>Reserved area<br/>Priority entry</div>
+          </div>
+          <div class="ticket-tier">
+            <div class="tier-name">Table (4)</div>
+            <div class="tier-price">$120</div>
+            <div class="tier-perks">Private table<br/>Bottle service<br/>Free wings</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-info-grid">
+          <div class="ed-info-card">
+            <div class="ed-info-icon">👔</div>
+            <div class="ed-info-text">
+              <div class="ed-info-label">Dress Code</div>
+              <div class="ed-info-value">Smart Casual</div>
+            </div>
+          </div>
+          <div class="ed-info-card">
+            <div class="ed-info-icon">🔞</div>
+            <div class="ed-info-text">
+              <div class="ed-info-label">Age</div>
+              <div class="ed-info-value">18+ ID Required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      ${ctaButtons('Get VIP Ticket', '✓ Ticket reserved! Check email')}
+    `;
+  }
+
+  // ============ 6. FINAL GALA: Menu Courses + Seating + Reservation ============
+  function buildFinal() {
+    return `
+      <div class="ed-section">
+        <div class="ed-section-title">🏆 The Final Gala</div>
+        <p class="ed-desc">The biggest night of the year! Watch the World Cup Final in style with a premium gala featuring 5-course dinner, premium drinks, live music, and giant screens. <strong>Black-tie optional</strong>. Brasil to the hexa! 🇧🇷</p>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">🍽️ 5-Course Menu</div>
+        <div class="courses-list">
+          <div class="course-row">
+            <div class="course-num">I</div>
+            <div class="course-icon">🥂</div>
+            <div class="course-info">
+              <div class="course-name">Welcome Toast</div>
+              <div class="course-desc">Caipirinha or champagne · house cocktail of choice</div>
+            </div>
+          </div>
+          <div class="course-row">
+            <div class="course-num">II</div>
+            <div class="course-icon">🍤</div>
+            <div class="course-info">
+              <div class="course-name">Appetizer</div>
+              <div class="course-desc">Brazilian shrimp pãstéis with passion fruit dip</div>
+            </div>
+          </div>
+          <div class="course-row">
+            <div class="course-num">III</div>
+            <div class="course-icon">🥗</div>
+            <div class="course-info">
+              <div class="course-name">Salad</div>
+              <div class="course-desc">Hearts of palm, mango, and lime vinaigrette</div>
+            </div>
+          </div>
+          <div class="course-row">
+            <div class="course-num">IV</div>
+            <div class="course-icon">🍗</div>
+            <div class="course-info">
+              <div class="course-name">Main Course</div>
+              <div class="course-desc">Signature Brasil-spice wings + churrasco picanha + arroz</div>
+            </div>
+          </div>
+          <div class="course-row">
+            <div class="course-num">V</div>
+            <div class="course-icon">🍮</div>
+            <div class="course-info">
+              <div class="course-name">Dessert</div>
+              <div class="course-desc">Brigadeiros chocolate trio with açai sorbet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">🪑 Choose Your Seating</div>
+        <div class="seating-grid">
+          <div class="seat-zone standard">
+            <div class="seat-zone-icon">💺</div>
+            <div class="seat-zone-name">Standard</div>
+            <div class="seat-zone-price">$150</div>
+            <div class="seat-zone-avail">12 seats left</div>
+          </div>
+          <div class="seat-zone premium">
+            <div class="seat-zone-icon">⭐</div>
+            <div class="seat-zone-name">Premium</div>
+            <div class="seat-zone-price">$280</div>
+            <div class="seat-zone-avail">5 seats left</div>
+          </div>
+          <div class="seat-zone vip">
+            <div class="seat-zone-icon">👑</div>
+            <div class="seat-zone-name">VIP Floor</div>
+            <div class="seat-zone-price">$500</div>
+            <div class="seat-zone-avail">Only 2 left!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-section-title">📍 Gala Venues</div>
+        ${locationsList([
+          { city: 'São Paulo (Grand Hall)', flag: '🌟', address: 'Av. Brigadeiro Faria Lima 2000, Itaim Bibi', phone: '+55 11 9999-8888' },
+          { city: 'Rio de Janeiro (Beachfront)', flag: '🌊', address: 'Av. Atlântica 500, Copacabana', phone: '+55 21 2345-6789' },
+          { city: 'Brasília (Capital)', flag: '🏛️', address: 'SCN Quadra 5 Bloco A, Asa Norte', phone: '+55 61 3234-5678' }
+        ])}
+      </div>
+
+      <div class="ed-section">
+        <div class="ed-info-grid">
+          <div class="ed-info-card">
+            <div class="ed-info-icon">🎩</div>
+            <div class="ed-info-text">
+              <div class="ed-info-label">Dress Code</div>
+              <div class="ed-info-value">Black-tie optional</div>
+            </div>
+          </div>
+          <div class="ed-info-card">
+            <div class="ed-info-icon">🎵</div>
+            <div class="ed-info-text">
+              <div class="ed-info-label">Entertainment</div>
+              <div class="ed-info-value">Live samba band</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      ${ctaButtons('Book Premium Table', '✓ Reservation confirmed! Check email')}
+    `;
+  }
+
+  // ============ Event Master Data ============
+  const eventMasterData = {
+    'watch-party': {
+      headerClass: 'green', imageSlug: 'event-watch-party', emoji: '⚽',
+      datePill: 'JUN 14 · 7:00 PM', title: 'Football Watch Party',
+      builder: buildWatchParty
+    },
+    'flagship': {
+      headerClass: 'yellow', imageSlug: 'event-flagship', emoji: '🎉',
+      datePill: 'JUN 25 · 10:00 AM', title: 'Flagship Open Event',
+      builder: buildFlagship
+    },
+    'draw': {
+      headerClass: 'blue', imageSlug: 'event-draw', emoji: '🎟️',
+      datePill: 'JUL 02 · 9:00 PM', title: 'Live Ticket Draw',
+      builder: buildDraw
+    },
+    'contest': {
+      headerClass: 'red', imageSlug: 'event-contest', emoji: '🍗',
+      datePill: 'JUL 10 · 6:00 PM', title: 'Wings Eating Contest',
+      builder: buildContest
+    },
+    'dj': {
+      headerClass: 'green', imageSlug: 'event-dj', emoji: '🎵',
+      datePill: 'JUL 18 · 8:00 PM', title: 'Brasil DJ Night',
+      builder: buildDJ
+    },
+    'final': {
+      headerClass: 'yellow', imageSlug: 'event-final', emoji: '🏆',
+      datePill: 'JUL 19 · 8:00 PM', title: 'Final Watch Party Gala',
+      builder: buildFinal
+    }
+  };
+
+  // ============ Open event detail modal ============
+  function openEventDetail(eventKey) {
+    const data = eventMasterData[eventKey];
+    if (!data) return;
+
+    // Header
+    const header = document.getElementById('ed-header');
+    header.className = 'ed-header ' + data.headerClass;
+    const headerImg = document.getElementById('ed-header-img');
+    const headerEmoji = document.getElementById('ed-header-emoji');
+
+    headerImg.style.display = 'block';
+    headerEmoji.classList.remove('visible');
+    const extensions = ['jpg', 'png', 'jpeg', 'webp', 'JPG', 'PNG'];
+    let attempt = 0;
+    function tryImg() {
+      if (attempt >= extensions.length) {
+        headerImg.style.display = 'none';
+        headerEmoji.classList.add('visible');
+        headerEmoji.textContent = data.emoji;
+        return;
+      }
+      headerImg.src = `images/${data.imageSlug}.${extensions[attempt]}`;
+      attempt++;
+    }
+    headerImg.onerror = tryImg;
+    tryImg();
+
+    document.getElementById('ed-date-pill').textContent = data.datePill;
+    document.getElementById('ed-title').textContent = data.title;
+
+    // Build unique body content
+    document.getElementById('ed-body').innerHTML = data.builder();
+
+    // Re-attach close-modal handlers (dynamically added buttons)
+    document.querySelectorAll('#ed-body [data-close-modal]').forEach(btn => {
+      btn.addEventListener('click', closeAllModals);
+    });
+
+    // Map pin handlers
+    document.querySelectorAll('#ed-body .map-pin').forEach(pin => {
+      pin.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const city = pin.dataset.city;
+        const cityNames = {
+          'sao-paulo': 'São Paulo · Av. Paulista 1500',
+          'rio': 'Rio de Janeiro · Av. Atlântica 500',
+          'salvador': 'Salvador · Av. Tancredo Neves 999',
+          'brasilia': 'Brasília · SCN Quadra 5 Bloco A',
+          'fortaleza': 'Fortaleza · Av. Beira Mar 3450',
+          'manaus': 'Manaus · Av. Djalma Batista 1500',
+          'porto-alegre': 'Porto Alegre · Av. Ipiranga 6681'
+        };
+        showToast(`📍 ${cityNames[city] || city}`);
+      });
+    });
+
+    // Gallery image loader (Flagship event)
+    document.querySelectorAll('#ed-body .gallery-item[data-gallery-img]').forEach(item => {
+      const slug = item.dataset.galleryImg;
+      const extensions = ['jpg', 'png', 'jpeg', 'webp', 'JPG', 'PNG'];
+      let attempt = 0;
+      const img = document.createElement('img');
+      img.alt = slug;
+
+      function tryNext() {
+        if (attempt >= extensions.length) {
+          // No image found — keep emoji fallback visible
+          img.remove();
+          return;
+        }
+        img.src = `images/${slug}.${extensions[attempt]}`;
+        attempt++;
+      }
+      img.onload = () => {
+        item.classList.add('has-photo');
+      };
+      img.onerror = tryNext;
+      item.insertBefore(img, item.firstChild);
+      tryNext();
+    });
+
+    // Animate live counter if exists
+    const liveEntries = document.getElementById('live-entries');
+    if (liveEntries) {
+      let current = 8234;
+      const animateCounter = setInterval(() => {
+        current += Math.floor(Math.random() * 3);
+        liveEntries.textContent = current.toLocaleString();
+      }, 3000);
+      // Stop when modal closes
+      document.getElementById('event-detail-modal').addEventListener('transitionend', () => {
+        if (!document.getElementById('event-detail-modal').classList.contains('show')) {
+          clearInterval(animateCounter);
+        }
+      }, { once: true });
+    }
+
+    openModal('event-detail-modal');
+  }
+
+  // Attach click handlers to event cards
+  document.querySelectorAll('[data-event]').forEach(card => {
+    card.addEventListener('click', () => {
+      openEventDetail(card.dataset.event);
+    });
+  });
+
+  // ============ Smart image loader: tries .jpg then .png ============
+  function setupSmartImages() {
+    document.querySelectorAll('img[data-img]').forEach(img => {
+      const baseName = img.dataset.img;
+      const extensions = ['jpg', 'png', 'jpeg', 'webp', 'JPG', 'PNG'];
+      let attempt = 0;
+
+      function tryNext() {
+        if (attempt >= extensions.length) {
+          // All failed — hide image, parent will show fallback
+          img.style.display = 'none';
+          const parent = img.parentElement;
+          if (parent.classList.contains('menu-card-img')) {
+            parent.classList.remove('has-image');
+          } else if (parent.classList.contains('event-banner')) {
+            parent.classList.remove('has-image');
+          } else if (parent.classList.contains('hero')) {
+            parent.classList.remove('has-image');
+          }
+          return;
+        }
+        img.src = `images/${baseName}.${extensions[attempt]}`;
+        attempt++;
+      }
+
+      img.onerror = tryNext;
+      tryNext();
+    });
+  }
+  setupSmartImages();
+
+  // ============ State ============
+  const state = {
+    cart: [],
+    codes: [
+      { code: 'WS-A7K2-9P3F', date: 'May 15, 2026', status: 'fresh' },
+      { code: 'WS-B5M8-2X4D', date: 'May 12, 2026', status: 'fresh' }
+    ],
+    points: 650,
+    wins: 0
+  };
+
+  // ============ Top nav scroll effect ============
+  const topnav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      topnav.classList.remove('transparent');
+    } else {
+      topnav.classList.add('transparent');
+    }
+  });
+
+  // ============ Toast ============
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+  document.querySelectorAll('[data-toast]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showToast(el.dataset.toast);
+    });
+  });
+
+  // ============ Smooth scroll for nav links + data-scroll ============
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const targetId = a.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-scroll]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const target = document.querySelector(el.dataset.scroll);
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 300);
+      }
+    });
+  });
+
+  // ============ Modal helpers ============
+  function openModal(id) {
+    document.getElementById(id).classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAllModals() {
+    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-close-modal]').forEach(btn => {
+    btn.addEventListener('click', closeAllModals);
+  });
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeAllModals();
+    });
+  });
+
+  // ============ Cart / Add to order ============
+  function updateCartBadge() {
+    const badge = document.getElementById('cart-badge');
+    if (state.cart.length > 0) {
+      badge.textContent = state.cart.length;
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+
+  document.querySelectorAll('.menu-add').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = btn.dataset.item;
+      const price = parseFloat(btn.dataset.price);
+      state.cart.push({ item, price });
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Added';
+      btn.classList.add('added');
+      showToast(`✓ Added: ${item}`);
+      updateCartBadge();
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove('added');
+      }, 1500);
+    });
+  });
+
+  // Cart click → checkout
+  document.getElementById('cart-btn').addEventListener('click', () => {
+    if (state.cart.length === 0) {
+      showToast('Cart is empty — order something first!');
+      return;
+    }
+    checkout();
+  });
+
+  function checkout() {
+    const total = state.cart.reduce((sum, item) => sum + item.price, 0);
+    const earned = Math.floor(total * 5);
+
+    document.getElementById('order-total').textContent = `$${total.toFixed(2)}`;
+    document.getElementById('earned-pts').textContent = earned;
+
+    state.points += earned;
+
+    const newCode = generateCode();
+    document.getElementById('new-code').textContent = newCode;
+
+    state.codes.unshift({
+      code: newCode,
+      date: 'Today, just now',
+      status: 'fresh'
+    });
+
+    state.cart = [];
+    updateCartBadge();
+    updateCodesList();
+    updateMembership();
+
+    openModal('order-success-modal');
+  }
+
+  function generateCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let part1 = '', part2 = '';
+    for (let i = 0; i < 4; i++) {
+      part1 += chars.charAt(Math.floor(Math.random() * chars.length));
+      part2 += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return `WS-${part1}-${part2}`;
+  }
+
+  document.getElementById('goto-spin').addEventListener('click', () => {
+    closeAllModals();
+    setTimeout(() => {
+      document.getElementById('spin').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('code-input').value = state.codes[0].code;
+        validateInput();
+      }, 700);
+    }, 300);
+  });
+
+  // ============ My Codes ============
+  function updateCodesList() {
+    const list = document.getElementById('codes-list');
+    list.innerHTML = '';
+    if (state.codes.length === 0) {
+      list.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--ink-soft); font-size: 14px;">No codes yet. Order something to get your first code!</div>`;
+      return;
+    }
+    state.codes.forEach(c => {
+      const row = document.createElement('div');
+      row.className = `code-row ${c.status === 'used' ? 'used' : ''} ${c.status === 'won' ? 'winning' : ''}`;
+      const statusClass = c.status === 'used' ? 'used-tag' : c.status === 'won' ? 'won' : 'fresh';
+      const statusText = c.status === 'used' ? 'Used' : c.status === 'won' ? '🏆 Won' : 'Ready';
+      row.innerHTML = `
+        <div style="flex:1;">
+          <div class="code-value">${c.code}</div>
+          <div class="code-meta">${c.date}</div>
+        </div>
+        <div class="code-status ${statusClass}">${statusText}</div>
+      `;
+      row.addEventListener('click', () => {
+        if (c.status === 'fresh') {
+          document.getElementById('spin').scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => {
+            document.getElementById('code-input').value = c.code;
+            validateInput();
+            showToast('✓ Code loaded — ready to spin!');
+          }, 500);
+        }
+      });
+      list.appendChild(row);
+    });
+  }
+
+  // ============ Membership ============
+  function updateMembership() {
+    document.getElementById('hero-pts').textContent = state.points;
+    document.getElementById('cur-pts').textContent = state.points;
+    const needed = Math.max(0, 1000 - state.points);
+    document.getElementById('needed-pts').textContent = needed;
+  }
+  function animateMembershipBar() {
+    const fillEl = document.getElementById('bar-fill');
+    if (fillEl) {
+      const pct = Math.min(100, (state.points / 1000) * 100);
+      fillEl.style.width = '0%';
+      setTimeout(() => {
+        fillEl.style.width = `${pct}%`;
+      }, 200);
+    }
+  }
+
+  // ============ Spin / Wheel ============
+  const codeInput = document.getElementById('code-input');
+  const redeemBtn = document.getElementById('redeem-btn');
+  const redeemBtnText = document.getElementById('redeem-btn-text');
+  const redeemBtnIcon = document.getElementById('redeem-btn-icon');
+
+  function validateInput() {
+    const value = codeInput.value.trim().toUpperCase();
+    const isValid = /^WS-[A-Z0-9]{2,8}-[A-Z0-9]{2,8}$/i.test(value) || /^WS-(TICKET|VOUCHER|SHOES|LUCK)$/i.test(value);
+    redeemBtn.disabled = !isValid;
+  }
+
+  codeInput.addEventListener('input', (e) => {
+    let val = e.target.value.toUpperCase().replace(/[^A-Z0-9-]/g, '');
+    e.target.value = val;
+    validateInput();
+  });
+
+  redeemBtn.addEventListener('click', () => {
+    if (redeemBtn.disabled) return;
+    const code = codeInput.value.trim().toUpperCase();
+
+    redeemBtnText.textContent = 'Verifying';
+    redeemBtnIcon.style.display = 'none';
+    const spinner = document.createElement('span');
+    spinner.className = 'spinner';
+    redeemBtn.appendChild(spinner);
+    redeemBtn.disabled = true;
+
+    setTimeout(() => {
+      redeemBtn.removeChild(spinner);
+      redeemBtnText.textContent = 'Activate Spin';
+      redeemBtnIcon.style.display = '';
+
+      const existingCode = state.codes.find(c => c.code === code);
+
+      if (existingCode && existingCode.status !== 'fresh') {
+        document.getElementById('invalid-title').textContent = 'Already Used';
+        document.getElementById('invalid-message').textContent = 'This code has already been redeemed. Each code can only be used once.';
+        openModal('invalid-modal');
+        return;
+      }
+
+      let forcedOutcome = null;
+      if (code === 'WS-TICKET') forcedOutcome = 'tickets';
+      else if (code === 'WS-VOUCHER') forcedOutcome = 'voucher';
+      else if (code === 'WS-SHOES') forcedOutcome = 'shoes';
+      else if (code === 'WS-LUCK') forcedOutcome = 'luck';
+
+      if (!existingCode && !forcedOutcome) {
+        document.getElementById('invalid-title').textContent = 'Invalid Code';
+        document.getElementById('invalid-message').textContent = 'This code does not exist. Order something to receive a real code.';
+        openModal('invalid-modal');
+        codeInput.value = '';
+        validateInput();
+        return;
+      }
+
+      window.pendingOutcome = forcedOutcome || randomOutcome();
+      window.pendingCode = existingCode;
+
+      codeInput.value = '';
+      validateInput();
+      openModal('wheel-modal');
+      resetWheel();
+    }, 1200);
+  });
+
+  function randomOutcome() {
+    const r = Math.random();
+    if (r < 0.10) return 'tickets';
+    if (r < 0.25) return 'shoes';
+    if (r < 0.50) return 'voucher';
+    return 'luck';
+  }
+
+  // Wheel
+  const wheel = document.getElementById('wheel');
+  const doSpin = document.getElementById('do-spin');
+  const closeWheelBtn = document.getElementById('close-wheel');
+  let currentRotation = 0;
+  let isSpinning = false;
+
+  const segmentMap = {
+    tickets: 30,
+    voucher: 150,
+    shoes: 270,
+    luck: 90
+  };
+
+  function resetWheel() {
+    doSpin.disabled = false;
+    doSpin.textContent = '🎰 SPIN THE WHEEL';
+    isSpinning = false;
+  }
+
+  doSpin.addEventListener('click', () => {
+    if (isSpinning) return;
+    isSpinning = true;
+    doSpin.disabled = true;
+    doSpin.textContent = 'Spinning...';
+
+    const outcome = window.pendingOutcome;
+    let targetAngle = segmentMap[outcome];
+
+    if (outcome === 'luck') {
+      const luckAngles = [90, 210, 330];
+      targetAngle = luckAngles[Math.floor(Math.random() * luckAngles.length)];
+    }
+
+    const jitter = (Math.random() - 0.5) * 40;
+    const finalAngle = targetAngle + jitter;
+    const fullSpins = 5 + Math.floor(Math.random() * 3);
+
+    const baseTarget = 360 - finalAngle;
+    currentRotation += fullSpins * 360 + baseTarget;
+
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+    setTimeout(() => {
+      if (window.pendingCode) {
+        window.pendingCode.status = outcome === 'tickets' ? 'won' : 'used';
+      }
+
+      closeAllModals();
+      setTimeout(() => {
+        if (outcome === 'tickets') {
+          state.wins++;
+          openModal('win-tickets-modal');
+          spawnConfetti('#win-tickets-modal .modal');
+        } else if (outcome === 'voucher') {
+          openModal('win-voucher-modal');
+          spawnConfetti('#win-voucher-modal .modal');
+        } else if (outcome === 'shoes') {
+          openModal('win-shoes-modal');
+          spawnConfetti('#win-shoes-modal .modal');
+        } else {
+          state.points += 50;
+          updateMembership();
+          animateMembershipBar();
+          openModal('lose-modal');
+        }
+        updateCodesList();
+      }, 400);
+    }, 5100);
+  });
+
+  closeWheelBtn.addEventListener('click', () => {
+    if (!isSpinning) closeAllModals();
+  });
+
+  // Confetti
+  function spawnConfetti(selector) {
+    const colors = ['#FFCB05', '#00754A', '#002776', '#c82014', '#ffffff', '#cba258'];
+    const modal = document.querySelector(selector);
+    if (!modal) return;
+    for (let i = 0; i < 60; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.left = Math.random() * 100 + '%';
+      c.style.top = '-20px';
+      c.style.transform = `rotate(${Math.random() * 360}deg)`;
+      c.style.opacity = '0';
+      modal.appendChild(c);
+
+      const duration = 2000 + Math.random() * 2000;
+      const delay = Math.random() * 800;
+      const xOffset = (Math.random() - 0.5) * 250;
+      c.animate([
+        { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+        { transform: `translate(${xOffset}px, 600px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ], {
+        duration: duration,
+        delay: delay,
+        easing: 'cubic-bezier(0.4, 0.1, 0.4, 1)',
+        fill: 'forwards'
+      });
+      setTimeout(() => c.remove(), duration + delay + 100);
+    }
+  }
+
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('2026-07-02T21:00:00').getTime();
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const setText = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(val).padStart(2, '0');
+    };
+    setText('cd-d', d);
+    setText('cd-h', h);
+    setText('cd-m', m);
+    setText('cd-s', s);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Scroll fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Membership bar animation on scroll
+  const memberObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateMembershipBar();
+        memberObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  memberObserver.observe(document.getElementById('member'));
+
+  // Init
+  updateCodesList();
+  updateMembership();
+  validateInput();
+</script>
+</body>
+</html>
